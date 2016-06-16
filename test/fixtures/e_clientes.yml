@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  TCedula: MyString
+  Cedula: MyString
+  Sexo: MyString
+  PNombre: MyString
+  PApellido: MyString
+  PTelefono: MyString
+  PMovil: MyString
+  PEmail: MyString
+  PDireccion: MyString
+  Nit: MyString
+  ENombre: MyString
+  ETelefono: MyString
+  EEmail: MyString
+  EDireccion: MyString
+  Foto: MyString
+  Tipo: MyString
+  FInicio: MyString
+  FFin: MyString
+  Usuarios_id: 
+
+two:
+  TCedula: MyString
+  Cedula: MyString
+  Sexo: MyString
+  PNombre: MyString
+  PApellido: MyString
+  PTelefono: MyString
+  PMovil: MyString
+  PEmail: MyString
+  PDireccion: MyString
+  Nit: MyString
+  ENombre: MyString
+  ETelefono: MyString
+  EEmail: MyString
+  EDireccion: MyString
+  Foto: MyString
+  Tipo: MyString
+  FInicio: MyString
+  FFin: MyString
+  Usuarios_id: 

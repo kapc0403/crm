@@ -1,0 +1,96 @@
+<body class="cyan">
+  <div id="login-page" class="row">
+    <div class="col s12 z-depth-4 card-panel">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'register-form'}) do |f| %>
+        <div class="row">
+          <div class="input-field col s12 center">
+            <h4>Registrar Usuario</h4>
+            <p class="center">Ingresa los datos correspondientes para crear tu primer usuario.</p>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">email</i>
+              <%= f.email_field :email, autofocus: false %>
+              <%= f.label :email %>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">face</i>
+              <%= f.text_field :nombre %>
+              <%= f.label :"Nombre" %>
+          </div>
+          <div class="input-field col s6">
+              <%= f.text_field :apellido %>
+              <%= f.label :"Apellido" %>
+            </div>
+        </div>
+        <div class="row margin">
+        <div class="input-field col s6">
+            <i class="material-icons prefix">call</i>
+              <%= f.text_field :telPersonal %>
+              <%= f.label :'Tel Personal' %>
+          </div>
+          <div class="input-field col s6">
+              <%= f.text_field :telOficina %>
+              <%= f.label :'Tel Oficina' %>
+            </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">gavel</i>
+              <%= f.select :rol, ['Administrador', '<bold><br>Soporte</bold>'.html_safe, 'Marketing', 'Ventas'], :include_blank => "Seleccione..."%>
+              <%= f.label :"Rol" %>
+          </div>
+          <div class="input-field col s6">
+              <%= f.text_field :colorLayout %>
+              <%= f.label :"Color" %>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">person outline</i>
+              <%= f.text_field :nombreUsuario %>
+              <%= f.label :"Nombre de Usuario" %>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">lock</i>
+              <%= f.password_field :password, autocomplete: "off" %>
+              <%= f.label :"Contraseña" %>
+          </div>
+          <div class="input-field col s6">
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+              <%= f.label :"Repetir Contraseña" %>
+          </div>
+        </div>
+        <div class="row margin">
+        <div class="input-field col s6">
+          <div class="file-field input-field">
+            <div class="btn cyan waves-effect waves-light">
+              <span>Foto<i class="material-icons right">unarchive</i></span>
+                <%= f.file_field :foto %>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+          </div>
+        </div>
+          <div class="input-field col s6"><br>
+            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Guardar
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+      </div><br>
+      <%end%>
+    </div>
+  </div>
+</body>
+
+<script>
+   $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>

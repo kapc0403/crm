@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CRM</title>
+  <!-- VIEWPORT, sirve para dar responsive y soporte a dspositivos moviles -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+  <% if usuario_signed_in? %>
+      <%= render "layouts/menu" %>
+  <% else %>
+    <body class="hold-transition login-page">
+      <%= yield %>
+    </body>
+  <%end%>
+  
+  
+</html>

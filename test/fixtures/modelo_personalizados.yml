@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  colorApariencia: MyString
+  homeW1: MyString
+  homeW2: MyString
+  homeW3: MyString
+  homeW4: MyString
+  homeW5: MyString
+  homeW6: MyString
+  homeW7: MyString
+  homeW8: MyString
+  homeW9: MyString
+  homeW10: MyString
+  usuario_id: 
+
+two:
+  colorApariencia: MyString
+  homeW1: MyString
+  homeW2: MyString
+  homeW3: MyString
+  homeW4: MyString
+  homeW5: MyString
+  homeW6: MyString
+  homeW7: MyString
+  homeW8: MyString
+  homeW9: MyString
+  homeW10: MyString
+  usuario_id: 

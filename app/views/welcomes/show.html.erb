@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombreempresa:</strong>
+  <%= @welcome.nombreEmpresa %>
+</p>
+
+<p>
+  <strong>Moneda:</strong>
+  <%= @welcome.moneda %>
+</p>
+
+<p>
+  <strong>Nombreencargado:</strong>
+  <%= @welcome.nombreEncargado %>
+</p>
+
+<p>
+  <strong>Telencargado:</strong>
+  <%= @welcome.telEncargado %>
+</p>
+
+<p>
+  <strong>Telempresa:</strong>
+  <%= @welcome.telEmpresa %>
+</p>
+
+<p>
+  <strong>Direccionempresa:</strong>
+  <%= @welcome.direccionEmpresa %>
+</p>
+
+<p>
+  <strong>Correoencargado:</strong>
+  <%= @welcome.correoEncargado %>
+</p>
+
+<%= link_to 'Edit', edit_welcome_path(@welcome) %> |
+<%= link_to 'Back', welcomes_path %>

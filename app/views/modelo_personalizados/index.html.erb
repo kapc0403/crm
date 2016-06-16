@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Modelo Personalizados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Colorapariencia</th>
+      <th>Homew1</th>
+      <th>Homew2</th>
+      <th>Homew3</th>
+      <th>Homew4</th>
+      <th>Homew5</th>
+      <th>Homew6</th>
+      <th>Homew7</th>
+      <th>Homew8</th>
+      <th>Homew9</th>
+      <th>Homew10</th>
+      <th>Usuario</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @modelo_personalizados.each do |modelo_personalizado| %>
+      <tr>
+        <td><%= modelo_personalizado.colorApariencia %></td>
+        <td><%= modelo_personalizado.homeW1 %></td>
+        <td><%= modelo_personalizado.homeW2 %></td>
+        <td><%= modelo_personalizado.homeW3 %></td>
+        <td><%= modelo_personalizado.homeW4 %></td>
+        <td><%= modelo_personalizado.homeW5 %></td>
+        <td><%= modelo_personalizado.homeW6 %></td>
+        <td><%= modelo_personalizado.homeW7 %></td>
+        <td><%= modelo_personalizado.homeW8 %></td>
+        <td><%= modelo_personalizado.homeW9 %></td>
+        <td><%= modelo_personalizado.homeW10 %></td>
+        <td><%= modelo_personalizado.usuario %></td>
+        <td><%= link_to 'Show', modelo_personalizado %></td>
+        <td><%= link_to 'Edit', edit_modelo_personalizado_path(modelo_personalizado) %></td>
+        <td><%= link_to 'Destroy', modelo_personalizado, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Modelo personalizado', new_modelo_personalizado_path %>

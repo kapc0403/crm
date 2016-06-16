@@ -1,0 +1,92 @@
+<% @wel = Welcome.take %>
+<!-- Si los registros en Welcome son vacios, carga lo siguiente -->
+<% if @wel.nil? %>
+<h3 class="text-center">Bienvenido a su CRM,</h3>
+<h4 class="text-center">Aquí podrá realizar la configuración inicial de su Aplicativo.</h4> <br> <br>
+<%= form_for(@welcome) do |f| %>
+  <% if @welcome.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@welcome.errors.count, "error") %> prohibited this welcome from being saved:</h2>
+
+      <ul>
+      <% @welcome.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="row">
+      <div class="col s5">
+        <%= f.label :"Nombre de su empresa" %>
+        <%= f.text_field :nombreEmpresa %>
+      </div>
+      <div class="col s5">
+        <%= f.label :"Nit" %>
+        <%= f.text_field :nit %>
+      </div>
+      <div class="col s2">
+        <%= f.label :moneda %>
+        <%= f.select :moneda, ['Pesos', 'Dolares', 'Euros'], :include_blank => "Seleccione..."%>
+      </div>
+  </div>
+  
+  <div class="row">
+    <div class="col s6">
+        <%= f.label :"Teléfono de Empresa" %>
+        <%= f.text_field :telEmpresa %>
+      </div>
+      <div class="col s6">
+        <%= f.label :"Dirección de Empresa" %>
+        <%= f.text_field :direccionEmpresa %>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col s4">
+        <%= f.label :"Nombre de Encargado" %>
+        <%= f.text_field :nombreEncargado %>
+      </div>
+      <div class="col s4">
+        <%= f.label :"Teléfono de Encargado" %>
+        <%= f.text_field :telEncargado %>
+      </div>
+      <div class="col s4">
+        <%= f.label :"Email de Encargado" %>
+        <%= f.text_field :correoEncargado %>
+      </div>
+  </div>
+  
+  <div class="row">
+    <div class="col s6">
+      <div class="file-field input-field">
+        <div class="btn cyan waves-effect waves-light">
+          <span>Logo<i class="material-icons right">unarchive</i></span>
+            <%= f.file_field :cover %>
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+    </div>
+      <div class="input-field col s6"><br>
+        <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Guardar
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+  </div>
+<% end %>
+<script>
+   $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
+<%end%>
+
+<!-- Si los registros en Welcome no son vacios, carga lo siguiente -->
+<% if !@wel.nil? %>
+<div class="row">
+  <h3 class="text-center">Bienvenido a su CRM,</h3>
+  <h4 class="text-center">Su aplicativo ya está configurado, Por favor inicie sesión en la página principal.</h4> 
+  </div>
+<%end%>

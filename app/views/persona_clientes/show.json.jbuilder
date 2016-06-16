@@ -1,0 +1,1 @@
+json.extract! @persona_cliente, :id, :tipoCedula, :cedula, :fechaNacimiento, :nombre, :apellido, :telefono, :movil, :email, :direccion, :foto, :tipo, :fechaInicio, :fechaFin, :usuarios_id, :created_at, :updated_at

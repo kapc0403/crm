@@ -1,0 +1,1 @@
+json.extract! @proveedor, :id, :tipoCedula, :cedula, :fechaNacimiento, :personaNombre, :personaApellido, :personaTelefono, :personaMovil, :personaEmail, :personaDireccion, :nit, :empresaNombre, :empresaDireccion, :empresaTelefono, :empresaEmail, :paginaWeb, :foto, :cuentaContable, :fechaInicio, :fechaFin, :usuarios_id, :created_at, :updated_at

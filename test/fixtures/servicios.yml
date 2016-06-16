@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  codigo: 1
+  disponibilidad: MyString
+  precio: 1
+  descripcion: MyString
+  usuarios_id: 
+
+two:
+  nombre: MyString
+  codigo: 1
+  disponibilidad: MyString
+  precio: 1
+  descripcion: MyString
+  usuarios_id: 
