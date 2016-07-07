@@ -1,0 +1,1 @@
+json.extract! @empresacliente, :id, :numidentificacion, :fechaNacimiento, :personaNombre, :personaApellido, :personaTelefono, :personaMovil, :personaEmail, :personaDireccion, :nit, :empresaNombre, :empresaDireccion, :empresaTelefono, :empresaEmail, :paginaWeb, :foto, :tipo, :fechaInicio, :fechaFin, :usuario_id, :created_at, :updated_at

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Asunto:</strong>
+  <%= @tarea.asunto %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @tarea.estado %>
+</p>
+
+<p>
+  <strong>Prioridad:</strong>
+  <%= @tarea.prioridad %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @tarea.descripcion %>
+</p>
+
+<p>
+  <strong>Fechainicio:</strong>
+  <%= @tarea.fechaInicio %>
+</p>
+
+<p>
+  <strong>Fechafin:</strong>
+  <%= @tarea.fechaFin %>
+</p>
+
+<p>
+  <strong>Usuarios:</strong>
+  <%= @tarea.usuarios %>
+</p>
+
+<p>
+  <strong>Empresaclientes:</strong>
+  <%= @tarea.empresaclientes %>
+</p>
+
+<%= link_to 'Edit', edit_tarea_path(@tarea) %> |
+<%= link_to 'Back', tareas_path %>

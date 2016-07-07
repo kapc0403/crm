@@ -1,37 +1,37 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Servicios</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Codigo</th>
-      <th>Disponibilidad</th>
-      <th>Precio</th>
-      <th>Descripcion</th>
-      <th>Usuarios</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @servicios.each do |servicio| %>
+<font><h1 class="text-primary">Lista de Servicios</h1></font>
+<div class="col-md-10 center-block no-float form-login padding_top">
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= servicio.nombre %></td>
-        <td><%= servicio.codigo %></td>
-        <td><%= servicio.disponibilidad %></td>
-        <td><%= servicio.precio %></td>
-        <td><%= servicio.descripcion %></td>
-        <td><%= servicio.usuarios %></td>
-        <td><%= link_to 'Show', servicio %></td>
-        <td><%= link_to 'Edit', edit_servicio_path(servicio) %></td>
-        <td><%= link_to 'Destroy', servicio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Nombre</th>
+        <th>Codigo</th>
+        <th>Disponibilidad</th>
+        <th>Precio</th>
+        <th>Descripción</th>
+        <th>Usuario</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
+    </thead>
+  
+    <tbody>
+      <% @servicios.each do |servicio| %>
+        <tr>
+          <td><%= servicio.nombre %></td>
+          <td><%= servicio.codigo %></td>
+          <td><%= servicio.disponibilidad %></td>
+          <td><%= servicio.precio %></td>
+          <td><%= servicio.descripción %></td>
+          <td><%= servicio.usuario %></td>
+          <td><%= link_to '', servicio, :class=>"fa fa-eye fa-1x" %></td>
+          <td><%= link_to '', edit_servicio_path(servicio), :class=>"fa fa-pencil fa-1x" %></td>
+          <td><%= link_to '', servicio, :class=>"fa fa-trash-o fa-1x", method: :delete, data: { confirm: '¿Esta Seguro que desea Eliminar?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
-
-<%= link_to 'New Servicio', new_servicio_path %>
+<%= will_paginate @servicio %>
+<div class="actions">
+  <a><%= link_to 'Nuevo Servicio', new_servicio_path, :class=>" fa fa-plus-circle fa-2x btn btn-border-primary btn-rounded btn-lg" %></a>
+</div>

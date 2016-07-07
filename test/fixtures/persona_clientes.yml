@@ -3,7 +3,7 @@
 one:
   tipoCedula: MyString
   cedula: MyString
-  fechaNacimiento: MyString
+  fechaNacimiento: 2016-06-24
   nombre: MyString
   apellido: MyString
   telefono: MyString
@@ -12,14 +12,14 @@ one:
   direccion: MyString
   foto: MyString
   tipo: MyString
-  fechaInicio: MyString
-  fechaFin: MyString
-  usuarios_id: 
+  fechaInicio: 2016-06-24
+  fechafin: 2016-06-24
+  usuario_id: 
 
 two:
   tipoCedula: MyString
   cedula: MyString
-  fechaNacimiento: MyString
+  fechaNacimiento: 2016-06-24
   nombre: MyString
   apellido: MyString
   telefono: MyString
@@ -28,6 +28,6 @@ two:
   direccion: MyString
   foto: MyString
   tipo: MyString
-  fechaInicio: MyString
-  fechaFin: MyString
-  usuarios_id: 
+  fechaInicio: 2016-06-24
+  fechafin: 2016-06-24
+  usuario_id: 

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  factura_id: 
+  referenciaProducto: MyString
+  cantidad: 1
+  total: MyString
+  descuento: MyString
+  producto_id: 
+  servicio_id: 
+
+two:
+  factura_id: 
+  referenciaProducto: MyString
+  cantidad: 1
+  total: MyString
+  descuento: MyString
+  producto_id: 
+  servicio_id: 

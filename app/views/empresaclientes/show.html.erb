@@ -1,0 +1,57 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1>Cliente: <%= @empresacliente.personaNombre %> <%= @empresacliente.personaApellido %></h1>
+  </div>
+  <div class="panel-body">
+    <d1>
+      <dt class="text-info">CC</dt>
+      <dd><%= @empresacliente.numidentificacion %></dd>
+      <dt class="text-info">Fecha Nacimiento:</dt>
+      <dd><%= @empresacliente.fechaNacimiento %></dd>
+      <dt class="text-info">Telefono:</dt>
+      <dd><%= @empresacliente.personaTelefono %></dd>
+      <dt class="text-info">Móvil:</dt>
+      <dd><%= @empresacliente.personaMovil %></dd>
+      <dt class="text-info">Email:</dt>
+      <dd><%= @empresacliente.personaEmail %></dd>
+      <dt class="text-info">Dirección:</dt>
+      <dd><%= @empresacliente.personaDireccion %></dd>
+    </d1>
+  </div>
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1>Empresa: <%= @empresacliente.empresaNombre %> </h1>
+  </div>
+  <div class="panel-body">
+    <d1>
+      <dt class="text-info">Nit: </dt>
+      <dd><% if @empresacliente.nit? %><%= @empresacliente.nit %><%else%><b>No Registra</b><%end%></dd>
+      <dt class="text-info">Dirección:</dt>
+      <dd><% if @empresacliente.empresaDireccion? %><%= @empresacliente.empresaDireccion %><%else%><b>No Registra</b><%end%></dd>
+      <dt class="text-info">Telefono:</dt>
+      <dd><% if @empresacliente.empresaTelefono? %><%= @empresacliente.empresaTelefono %><%else%><b>No Registra</b><%end%></dd>
+      <dt class="text-info">Email:</dt>
+      <dd><% if @empresacliente.empresaEmail? %><%= @empresacliente.empresaEmail %><%else%><b>No Registra</b><%end%></dd>
+      <dt class="text-info">Pagina Web:</dt>
+      <dd><% if @empresacliente.paginaWeb? %><%= @empresacliente.paginaWeb %><%else%><b>No Registra</b><%end%></dd>
+      <dt class="text-info">Foto:</dt>
+      <dd><%= @empresacliente.foto %></dd>
+      <dt class="text-info">Fecha Inicio de Contrato:</dt>
+      <dd><%= @empresacliente.fechaInicio %></dd>
+      <dt class="text-info">Fecha Fin de Contrato:</dt>
+      <dd><%= @empresacliente.fechaFin %></dd>
+      <dt class="text-info">Usuario:</dt>
+      <dd><%= @empresacliente.usuario.nombre %> <%= @empresacliente.usuario.apellido %></dd>
+    </d1>
+  </div>
+</div>
+
+<div class="actions">
+  <a><%= link_to 'Editar', edit_empresacliente_path(@empresacliente), :class=>"btn btn-primary fa fa-pencil-square-o fa-2x" %></a>
+  <a><%= link_to 'Volver', :back, :class=>" fa fa-arrow-circle-left fa-2x btn btn-primary" %></a>
+  <% if @empresacliente.tipo === "Prospecto" %>
+    <a><%= link_to "Convertir a Cliente", "", :href=> "/changetypecliente/" + @empresacliente.id.to_s ,:class =>"btn btn-primary fa fa-2x"%></a>
+  <%end%>
+</div>

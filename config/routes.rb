@@ -1,26 +1,41 @@
 Rails.application.routes.draw do
   
-  resources :modelo_personalizados
+  resources :tareas
+  resources :seguimientos
+  resources :seguimientos
+  resources :tiposeguimientos
+  resources :estadofacturas
+  resources :detallefacturas
   resources :servicios
+  resources :facturas
+  resources :empresaclientes
+  resources :detalle_facturas
   resources :productos
   resources :modelo_personalizados
-  resources :proveedors
-  resources :proveedors
-  resources :persona_clientes
-  resources :empresa_clientes
   resources :proveedors
   resources :welcomes
   resources :ciudads
   resources :departamentos
-  resources :clientes
-  resources :clientes
-  resources :e_clientes
-  resources :empresas
-  resources :clientes
   
+  
+  get "detalle_facturas/getproductosdetallefacturabyid/:id", to: "detalle_facturas#getproductosdetallefacturabyid"
+  get "detalle_facturas/getserviciosdetallefacturabyid/:id", to: "detalle_facturas#getserviciosdetallefacturabyid"
+  delete "detalle_facturas/destroydetallesbyfacturaid/:id", to: "detalle_facturas#destroydetallesbyfacturaid" 
+  get "mailers/customer_mailer/factura_email/:id", to: "mailers/customer_mailer#factura_email"
   get "/configinicial", to: "welcomes#new"
-
-  devise_for :usuarios
+  get "/prospectosempresa", to: "empresaclientes#indexprospectos"
+  get "/propuestas", to: "facturas#indexpropuestas"
+  get "/pedidos", to: "facturas#indexpedidos"
+  get "/ordenes", to: "facturas#indexordenes"
+  
+  get 'changetypecliente/:id' => "empresaclientes#changetypecliente"
+  get 'changestatepropuesta/:id' => "facturas#changestatepropuesta"
+  get 'changestatepedido/:id' => "facturas#changestatepedido"
+  get 'changestateorden/:id' => "facturas#changestateorden"
+  get 'changestatefactura/:id' => "facturas#changestatefactura"
+  
+  
+  devise_for :usuarios, controllers: {registrations: "registrations"}
   devise_scope :usuario do
     authenticated :usuario do
       root 'welcomes#index', as: :authenticated_root

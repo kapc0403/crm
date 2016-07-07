@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<font><h1 class="text-info">Prospectos</h1></font>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Empresa</th>
+        <th>Teléfono Empresa</th>
+        <th>Usuario</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @empresaclientes.each do |empresacliente| %>
+        <tr>
+          <td><%= empresacliente.personaNombre %> <%= empresacliente.personaApellido %></td>
+          <td><%= empresacliente.personaTelefono %></td>
+          <td><%= empresacliente.empresaNombre %></td>
+          <td><%= empresacliente.empresaTelefono %></td>
+          <td><%= empresacliente.usuario.nombre %> <%= empresacliente.usuario.apellido %></td>
+          <td><%= link_to '', empresacliente, :class=>"fa fa-eye fa-1x" %></td>
+          <td><%= link_to '', edit_empresacliente_path(empresacliente), :class=>"fa fa-pencil fa-1x" %></td>
+          <td><%= link_to '', empresacliente, :class=>"fa fa-trash-o fa-1x", method: :delete, data: { confirm: '¿Esta Seguro que desea Eliminar?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%= will_paginate @empresaclientes %>
+<br>
+
+<div class="actions">
+  <a><%= link_to ' Nuevo Prospecto', new_empresacliente_path, :class=>" fa fa-plus-circle fa-2x btn btn-primary" %></a>
+</div>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Factura:</strong>
+  <%= @detalle_factura.factura.id %>
+</p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @detalle_factura.cantidad %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @detalle_factura.total %>
+</p>
+
+<p>
+  <strong>Descuento:</strong>
+  <%= @detalle_factura.descuento %>
+</p>
+
+<p>
+  <strong>Producto:</strong>
+  <%= @detalle_factura.producto %>
+</p>
+
+<p>
+  <strong>Servicio:</strong>
+  <%= @detalle_factura.servicio %>
+</p>
+
+<%= link_to 'Edit', edit_detalle_factura_path(@detalle_factura) %> |
+<%= link_to 'Back', detalle_facturas_path %>

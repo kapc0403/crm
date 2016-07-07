@@ -1,44 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1>Producto: <%= @producto.nombre %></h1>
+  </div>
+  <div class="panel-body">
+    <d1 class="dl-horizontal">
+      <dt class="text-info">Codigo:</dt>
+      <dd><%= @producto.codigo %></dd>
+      <dt class="text-info">Fabricante:</dt>
+      <dd><%= @producto.fabricante %></dd>
+      <dt class="text-info">Disponibilidad:</dt>
+      <dd><%= @producto.disponibilidad %></dd>
+      <dt class="text-info">Precio:</dt>
+      <dd><%= @producto.precio %></dd>
+      <dt class="text-info">Cantidad:</dt>
+      <dd><%= @producto.cantidad %></dd>
+      <dt class="text-info">Descripcion:</dt>
+      <dd><%= @producto.descripcion %></dd>
+      <dt class="text-info">Proveedor:</dt>
+      <dd><%= @producto.proveedors_id %></dd>
+    </d1>
+  </div>
+</div>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @producto.nombre %>
-</p>
-
-<p>
-  <strong>Codigo:</strong>
-  <%= @producto.codigo %>
-</p>
-
-<p>
-  <strong>Fabricante:</strong>
-  <%= @producto.fabricante %>
-</p>
-
-<p>
-  <strong>Disponibilidad:</strong>
-  <%= @producto.disponibilidad %>
-</p>
-
-<p>
-  <strong>Precio:</strong>
-  <%= @producto.precio %>
-</p>
-
-<p>
-  <strong>Cantidad:</strong>
-  <%= @producto.cantidad %>
-</p>
-
-<p>
-  <strong>Descripcion:</strong>
-  <%= @producto.descripcion %>
-</p>
-
-<p>
-  <strong>Proveedors:</strong>
-  <%= @producto.proveedors %>
-</p>
-
-<%= link_to 'Edit', edit_producto_path(@producto) %> |
-<%= link_to 'Back', productos_path %>
+<div>
+  <a><%= link_to 'Editar', edit_producto_path(@producto), :class=>"btn btn-primary fa fa-pencil-square-o fa-2x" %></a>
+  <a><%= link_to 'Volver', :back, :class=>"btn btn-primary fa fa-arrow-circle-left fa-2x" %></a>
+</div>

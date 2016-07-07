@@ -1,6 +1,8 @@
-<h1>Editing Proveedor</h1>
+<font><h1 class="text-primary">Editar Proveedor</h1></font>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @proveedor %> |
-<%= link_to 'Back', proveedors_path %>
+<div class="actions">
+  <a><%= link_to 'Ver', @proveedor, :class=>"btn btn-primary fa fa-eye fa-2x" %></a>
+  <a><%= link_to 'Volver', :back, :class=>"btn btn-primary fa fa-arrow-circle-left fa-2x" %></a>
+</div>

@@ -11,87 +11,188 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :"Tipo Cedula" %><br>
-    <%= f.text_field :tipoCedula %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row fac-item well">
+        <div class="text-primary">
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <center><font><h1 class="text-primary">Datos Cliente Encargado</h1></font></center>
+            </div>
+            <div class="col-md-5 col-md-offset-1">
+              <div class="field">
+                <%= f.label :"Nombre" %><br>
+                <%= f.text_field :personaNombre, placeholder: "Lidia Maria", :class=>"form-control"%>
+              </div>
+            </div>
+            <div class="col-md-5 col-md-offset-0">
+              <div class="field">
+                <%= f.label :"Apellido" %><br>
+                <%= f.text_field :personaApellido, placeholder: "Palencia Aparicia", :class=>"form-control"%>
+              </div>
+            </div>
+          </div>
+          <br>
+          
+          <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+              <div class="field">
+                <%= f.label :"Teléfono" %><br>
+                <%= f.text_field :personaTelefono, type: "number", placeholder: "2407856", :class=>"form-control"%>
+              </div>
+            </div>
+            <div class="col-md-5 col-md-offset-0">
+              <div class="field">
+                <%= f.label :"Móvil" %><br>
+                <%= f.text_field :personaMovil, type: "number", placeholder: "3167496235", :class=>"form-control"%>
+              </div>
+            </div>
+          </div>
+          <br>
+          
+          <div class="row">
+            <div class="col-md-2 col-md-offset-1">
+              <div class="text-info">
+                <%= f.label :"Tipo Cedula" %><br>
+                <%= f.text_field :tipoCedula, placeholder: "CC", :class=>"form-control", :disabled=> true %>
+              </div>
+            </div>
+            <div class="col-md-3 col-md-offset-0">
+              <div class="field">
+                <%= f.label :"Numero de Cedula" %><br>
+                <%= f.text_field :cedula, type: "number", placeholder: "60345234", :class=>"form-control"%>
+              </div>
+            </div>
+            <div class="col-md-5 col-md-offset-0">
+              <div class="field">
+                <%= f.label :"Fecha de Nacimiento" %><br>
+                <%= f.text_field :fechaNacimiento, type: "date", :class=>"form-control" %>
+              </div>
+            </div>
+          </div>
+          <br>
+          
+          <div class="row">
+            <div class="col-md-4 col-md-offset-1">
+              <div class="field">
+                <%= f.label :"Email" %><br>
+                <%= f.text_field :personaEmail, placeholder: "LidiaPalencia@hotmail.com", :class=>"form-control"%>
+              </div>
+            </div>
+            <div class="col-md-6 col-md-offset-0">
+              <div class="field">
+                <%= f.label :"Dirección" %><br>
+                <%= f.text_field :personaDireccion, placeholder: "Cll 15 # 6-55 Castellana", :class=>"form-control"%>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-10 col-md-offset-1">
+            <center><font><h1 class="text-primary">Datos Empresa</h1></font></center>
+          </div>
+          <br></br>
+          <br></br>
+          <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+              <div class="field">
+                <%= f.label :"NIT" %><br>
+                <%= f.text_field :nit, type: "number", placeholder: "23637837-8", :class=>"form-control"%>
+              </div>
+            </div>
+            <div class="col-md-5 col-md-offset-0">
+              <div class="field">
+                <%= f.label :"Empresa" %><br>
+                <%= f.text_field :empresaNombre, placeholder: "Vendas WAL", :class=>"form-control"%>
+              </div>
+            </div>
+          </div>
+          <br>
+          
+          <div class="row">
+            <div class="col-md-3 col-md-offset-1">
+              <div class="field">
+                <%= f.label :"Telefono" %><br>
+                <%= f.text_field :empresaTelefono, type: "number", placeholder: "2504733", :class=>"form-control"%>
+              </div>
+            </div>
+            <div class="col-md-7 col-md-offset-0">
+              <div class="field">
+                <%= f.label :"Dirección" %><br>
+                <%= f.text_field :empresaDireccion, placeholder: "Crr 74 # 5-32 Belen", :class=>"form-control"%>
+              </div>
+            </div>
+          </div>
+          <br>
+          
+          <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+              <div class="field">
+                <%= f.label :"Email" %><br>
+                <%= f.text_field :empresaEmail, placeholder: "ventaswal@hotmail.com", :class=>"form-control"%>
+            </div>
+            </div>
+            <div class="col-md-5 col-md-offset-0">
+              <div class="field">
+                <%= f.label :"Pagina Web" %><br>
+                <%= f.text_field :paginaWeb, placeholder: "www.ventaswal.com.co", :class=>"form-control" %>
+            </div>
+            </div>
+          </div>
+          <br>
+          
+          <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+              <div class="field">
+                <%= f.label :"Cuenta Contable" %><br>
+                <%= f.text_field :cuentaContable, placeholder: "1234 1233 7462 5647", :class=>"form-control" %>
+              </div>
+            </div>
+            <div class="col-md-5 col-md-offset-0">
+              <div class="field">
+                <%= f.label :"Usuario a Cargo" %><br>
+                <%= f.text_field :usuarios_id, placeholder: "......", :class=>"form-control" %>
+              </div>
+            </div>
+          </div>
+          <br>
+          
+          <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+              <div class="field">
+                <%= f.label :"Fecha Inicio Contrato" %>
+                <%= f.text_field :fechaInicio, type: "date", :class=>"form-control" %>
+              </div>
+            </div>
+            <div class="col-md-5 col-md-offset-0">
+              <div class="field">
+                <%= f.label :"Fecha Fin Contrato" %>
+                <%= f.text_field :fechaFin, type: "date", :class=>"form-control" %>
+              </div>
+            </div>
+          </div>
+          <br>
+          
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="field">
+                <%= f.label :"Foto:" %>
+                <%= f.text_field :foto, :class=>"form-control" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :"Cedula" %><br>
-    <%= f.text_field :cedula %>
-  </div>
-  <div class="field">
-    <%= f.label :"Fecha Nacimiento" %><br>
-    <%= f.text_field :fechaNacimiento %>
-  </div>
-  <div class="field">
-    <%= f.label :"Nombre" %><br>
-    <%= f.text_field :personaNombre %>
-  </div>
-  <div class="field">
-    <%= f.label :"Apellido" %><br>
-    <%= f.text_field :personaApellido %>
-  </div>
-  <div class="field">
-    <%= f.label :"Telefono" %><br>
-    <%= f.text_field :personaTelefono %>
-  </div>
-  <div class="field">
-    <%= f.label :"Movil" %><br>
-    <%= f.text_field :personaMovil %>
-  </div>
-  <div class="field">
-    <%= f.label :"Email" %><br>
-    <%= f.text_field :personaEmail %>
-  </div>
-  <div class="field">
-    <%= f.label :"Direccion" %><br>
-    <%= f.text_field :personaDireccion %>
-  </div>
-  <div class="field">
-    <%= f.label :"NIT" %><br>
-    <%= f.text_field :nit %>
-  </div>
-  <div class="field">
-    <%= f.label :"Nombre" %><br>
-    <%= f.text_field :empresaNombre %>
-  </div>
-  <div class="field">
-    <%= f.label :"Direccion" %><br>
-    <%= f.text_field :empresaDireccion %>
-  </div>
-  <div class="field">
-    <%= f.label :"Telefono" %><br>
-    <%= f.text_field :empresaTelefono %>
-  </div>
-  <div class="field">
-    <%= f.label :"Email" %><br>
-    <%= f.text_field :empresaEmail %>
-  </div>
-  <div class="field">
-    <%= f.label :"Pagina Web" %><br>
-    <%= f.text_field :paginaWeb %>
-  </div>
-  <div class="field">
-    <%= f.label :"Foto" %><br>
-    <%= f.text_field :foto %>
-  </div>
-  <div class="field">
-    <%= f.label :"Cuenta Contable" %><br>
-    <%= f.text_field :cuentaContable %>
-  </div>
-  <div class="field">
-    <%= f.label :"Fecha Inicio Contrato" %><br>
-    <%= f.text_field :fechaInicio %>
-  </div>
-  <div class="field">
-    <%= f.label :"Fecha Fin Contrato" %><br>
-    <%= f.text_field :fechaFin %>
-  </div>
-  <div class="field">
-    <%= f.label :usuarios_id %><br>
-    <%= f.text_field :usuarios_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  
+  <br>
+  
+  
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="actions">
+        <a><%= f.submit 'Guardar Proveedor', :class=>"btn btn-rouder-primary btn-block fa fa-2x" %></a>
+      </div>
+    </div>
   </div>
 <% end %>

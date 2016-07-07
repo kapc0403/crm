@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @tiposeguimiento.nombre %>
+</p>
+
+<p>
+  <strong>Activo:</strong>
+  <%= @tiposeguimiento.activo %>
+</p>
+
+<%= link_to 'Edit', edit_tiposeguimiento_path(@tiposeguimiento) %> |
+<%= link_to 'Back', tiposeguimientos_path %>

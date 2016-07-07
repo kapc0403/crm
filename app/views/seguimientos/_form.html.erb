@@ -1,0 +1,37 @@
+<%= form_for(@seguimiento) do |f| %>
+  <% if @seguimiento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@seguimiento.errors.count, "error") %> prohibited this seguimiento from being saved:</h2>
+
+      <ul>
+      <% @seguimiento.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :empresacliente_id %><br>
+    <%= f.text_field :empresacliente_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tiposeguimiento_id %><br>
+    <%= f.text_field :tiposeguimiento_id %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_area :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :usuario_id %><br>
+    <%= f.text_field :usuario_id %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha %><br>
+    <%= f.datetime_select :fecha %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

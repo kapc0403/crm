@@ -1,0 +1,21 @@
+<%= form_for(@estadofactura) do |f| %>
+  <% if @estadofactura.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estadofactura.errors.count, "error") %> prohibited this estadofactura from being saved:</h2>
+
+      <ul>
+      <% @estadofactura.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -18,7 +18,7 @@ class PersonaClientesControllerTest < ActionController::TestCase
 
   test "should create persona_cliente" do
     assert_difference('PersonaCliente.count') do
-      post :create, persona_cliente: { apellido: @persona_cliente.apellido, cedula: @persona_cliente.cedula, direccion: @persona_cliente.direccion, email: @persona_cliente.email, fechaFin: @persona_cliente.fechaFin, fechaInicio: @persona_cliente.fechaInicio, fechaNacimiento: @persona_cliente.fechaNacimiento, foto: @persona_cliente.foto, movil: @persona_cliente.movil, nombre: @persona_cliente.nombre, telefono: @persona_cliente.telefono, tipo: @persona_cliente.tipo, tipoCedula: @persona_cliente.tipoCedula, usuarios_id: @persona_cliente.usuarios_id }
+      post :create, persona_cliente: { apellido: @persona_cliente.apellido, cedula: @persona_cliente.cedula, direccion: @persona_cliente.direccion, email: @persona_cliente.email, fechaInicio: @persona_cliente.fechaInicio, fechaNacimiento: @persona_cliente.fechaNacimiento, fechafin: @persona_cliente.fechafin, foto: @persona_cliente.foto, movil: @persona_cliente.movil, nombre: @persona_cliente.nombre, telefono: @persona_cliente.telefono, tipo: @persona_cliente.tipo, tipoCedula: @persona_cliente.tipoCedula, usuario_id: @persona_cliente.usuario_id }
     end
 
     assert_redirected_to persona_cliente_path(assigns(:persona_cliente))
@@ -35,7 +35,7 @@ class PersonaClientesControllerTest < ActionController::TestCase
   end
 
   test "should update persona_cliente" do
-    patch :update, id: @persona_cliente, persona_cliente: { apellido: @persona_cliente.apellido, cedula: @persona_cliente.cedula, direccion: @persona_cliente.direccion, email: @persona_cliente.email, fechaFin: @persona_cliente.fechaFin, fechaInicio: @persona_cliente.fechaInicio, fechaNacimiento: @persona_cliente.fechaNacimiento, foto: @persona_cliente.foto, movil: @persona_cliente.movil, nombre: @persona_cliente.nombre, telefono: @persona_cliente.telefono, tipo: @persona_cliente.tipo, tipoCedula: @persona_cliente.tipoCedula, usuarios_id: @persona_cliente.usuarios_id }
+    patch :update, id: @persona_cliente, persona_cliente: { apellido: @persona_cliente.apellido, cedula: @persona_cliente.cedula, direccion: @persona_cliente.direccion, email: @persona_cliente.email, fechaInicio: @persona_cliente.fechaInicio, fechaNacimiento: @persona_cliente.fechaNacimiento, fechafin: @persona_cliente.fechafin, foto: @persona_cliente.foto, movil: @persona_cliente.movil, nombre: @persona_cliente.nombre, telefono: @persona_cliente.telefono, tipo: @persona_cliente.tipo, tipoCedula: @persona_cliente.tipoCedula, usuario_id: @persona_cliente.usuario_id }
     assert_redirected_to persona_cliente_path(assigns(:persona_cliente))
   end
 

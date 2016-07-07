@@ -1,0 +1,678 @@
+<div class="container-fluid">
+  <div class="row">
+    <div ng-app="productsApp"> 
+      <%= form_for(@factura) do |f| %>
+      <% if @factura.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@factura.errors.count, "error") %> prohibited this factura from being saved:</h2>
+            <ul>
+              <% @factura.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+        </div>
+      <% end %>
+      
+      <div class="container-fluid">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h1 style="color:white;"><% if @factura.ordencompra? %>
+              <%= @factura.estadofactura.nombre.to_s+" N° "+@factura.ordencompra.to_s %><%else%>Propuesta<%end%></h1>
+          </div>
+            
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                  <div class="form-group">
+                    <%= f.label :"Fecha Inicio:" %><br>
+                    <%= f.date_select :fecha, :start_year => Time.now.year - 10, :end_year => Time.now.year + 10 %>
+                  </div>
+                </div>
+            
+                <div class="col-md-5 col-md-offset-0">
+                  <div class="form-group">
+                    <%= f.label :"Fecha Fin:" %><br>
+                    <%= f.date_select :fechafin, :start_year => Time.now.year - 10, :end_year => Time.now.year + 10 %>
+                  </div>
+                </div>
+              </div>
+          
+          <div class="row" ng-controller="CustomerController as cusControl" ng-init="cusControl.init(<%= @factura.id || 0 %>)">
+            <div class="col-md-12 col-md-offset-1" >
+              <div class="form-group">
+                <span class="btn btn-default" ng-show="cusControl.factura_id == 0" data-target=".modal-customers" data-toggle="modal" ng-click="cusControl.getCustomers()"><i class="fa fa-user"></i> Clientes</span>
+                <h4 style="display:inline; margin-left: 15px;">Cliente: <% if @factura.empresacliente.present? %>  <%= @factura.empresacliente.personaNombre + " " + @factura.empresacliente.personaApellido  %>  <%else%> <%= "{{cusControl.customer.nombre}}"%> <%end%></h4>
+              </div>
+              <!--Empresa cliente-->
+              <%= f.text_field :empresacliente_id, placeholder: "Empresa Cliente", :type=>"hidden", :value=> @factura.empresacliente_id || "{{cusControl.customer.id}}"%>
+              <!--Empresa cliente-->
+            </div>
+            <!--usuario vendedor-->
+                <%= f.text_field :usuario_id, placeholder: "Usuario Id", :type=>'hidden', :value=> @factura.usuario_id || current_usuario.id  %>
+            <!--usuario vendedor-->
+            
+            <!--modal-clientes-->
+              <div class="modal fade modal-customers" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                      <h4 class="modal-title" id="gridSystemModalLabel">Clientes</h4>
+                    </div>
+                    
+                    <style>
+                      .customer-item{
+                        border: 1px solid black;
+                      }
+                      .customer-item:hover{
+                        border: 2px solid black;
+                        background-color: #f2f2f2;
+                      }
+                    </style>
+                    
+                    <div class="modal-body">
+                      <div class="row customer-list">
+                        <div class="col-md-12 form-group">
+                          <input type="text" class="form-control" ng-model="cusControl.filterCustomer" placeholder="Buscar">
+                        </div>          
+                        <div class="col-md-4 customer-item" ng-repeat="customer in cusControl.customersList | filter: cusControl.filterCustomer">
+                          <h3 class="text-info">{{customer.personaNombre + " " + customer.personaApellido}}</h3>
+                            <h3 class="ng-binding">{{customer.personaTelefono || customer.personaMovil}}</h3>
+                            <input type="button" ng-click="cusControl.addCustomer(customer)" class="btn btn-primary" data-dismiss="modal" value="Seleccionar">
+                      </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                    
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+              <!--modal-clientes-->
+              
+          </div>
+    
+          
+          <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+              <div class="form-group">
+                <%= f.text_field :ordencompra, placeholder: "Orden Compra", :class=>"form-control", :value=> @factura.ordencompra ||
+                Welcome.last.prefijoconsecutivo+"-"+(Welcome.last.sufijoconsecutivo+Factura.count+1).to_s %>
+              </div>
+            </div>
+            <div class="col-md-5 col-md-offset-0">
+              <div class="form-group">
+                <%= f.collection_select(:estadofactura_id, Estadofactura.all, 
+                                      :id, :nombre,
+                                   {:prompt => false}, {:class=>"form-control", :style=>"padding:6px 0px;"}) %>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="form-group">
+                <%= f.text_area :condiciones, placeholder: "Condiciones", :class=>"form-control"%>
+            </div>
+            </div>
+          </div>
+      
+        </div>
+        
+        <br>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <div class="form-group">
+                 <input type="submit" name="commit" value="Guardar" class="btn btn-primary btn-block" style="font-size:18px;">
+              </div>
+            </div>
+          </div>        
+        
+      </div> <!--panel-->
+      
+    </div> <!--container-->
+      
+    <div ng-controller="ProductsController as productCtrl">
+      
+    <input type="hidden" ng-init="productCtrl.init(<%= @factura.id || 0 %>)" ng-model="productCtrl.factura_id" id="factura_id">
+    
+    <% end %>
+    
+    <!--<form id="formDetalleFactura"  id="new_detalle_factura" action="/detalle_facturas.json" accept-charset="UTF-8" method="post"  data-remote="true"> -->
+  <form id="formDetalleFactura" style="margin-top:15px"  ng-show="productCtrl.factura_id > 0" ng-submit="productCtrl.guardarFacItems()" method="post"  data-remote="true">
+  <div class="container-fluid fac-list">
+    
+    <div class="row well">
+         
+      <div class="col-md-3">
+        <h1 class="text-info">Detalle {{productCtrl.factura_id}}</h1>
+      </div>
+      
+      <div class="col-md-offset-8">
+        <div class="btn btn-success" data-toggle="modal" ng-click="productCtrl.listarProductos();" data-target=".modal-productos"> <i class="fa fa-plus-circle fa-2x"></i> Productos</div>
+        <div class="btn btn-success" data-toggle="modal" ng-click="productCtrl.listarServicios();" data-target=".modal-servicios"> <i class="fa fa-plus-circle fa-2x"></i> Servicios</div>
+      </div>
+    
+      
+    </div>
+    
+    <div class="row fac-item well" ng-repeat="facItem in productCtrl.facList">
+      <div class="col-md-12">
+        <h1 class="text-primary">{{facItem.productName}}</h1>
+      </div>
+      <div class="col-md-2 col-md-offset-1">
+        <label for="2">Cantidad: </label>
+        <input type="number" id ="2" class="fac-item-cantidad math form-control" ng-model="facItem.qty">
+      </div>
+      <div class="col-md-2 col-md-offset-0">  
+        <label for="3">Precio Unitario:</label>
+        <input id ="3" ng-model="facItem.unitPrice" class="fac-item-precioUnitario math form-control" value="{{facItem.unitPrice}}">
+      </div>
+      <div class="col-md-2 col-md-offset-0">
+        <label for="4">Descuento %:</label>
+        <input type="number" id ="4" ng-model="facItem.discount" class="fac-item-descuento math form-control" min="0" max="100">
+      </div>
+      <div class="col-md-2 col-md-offset-0">
+        <label for="5">Total</label>
+        <input type="text"  id ="5" ng-model="facItem.total" value="" class="fac-item-total form-control">
+      </div>
+      <div class="col-xs-1 col-xs-offset-0">
+        <div class="btn btn-danger" ng-click="productCtrl.eliminarProducto(facItem);">
+          <i class="fa fa-trash fa-2x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="well container-fluid report">
+    <div class="row">
+      <div class="col-md-8">
+        <h2 class="text-info">Total factura:</h2>
+        <h3 class="fac-total text-primary">{{productCtrl.calcularTotalFac() | currency}}</h3>
+      </div>
+    </div>
+  </div>
+  
+  <div class="well container-fluid report">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <input type="submit" value="Guardar Detalles Factura" class="btn btn-success">
+      </div>
+    </div>
+  </div>
+  </form>
+  
+
+
+
+
+
+
+
+
+  <script>
+  var app = angular.module('productsApp', []);
+  
+  app.factory('crmApi', ['$http', function($http){
+    
+    var crmApi = {};
+    
+    crmApi.getProducts = function(){
+      return  $http.get('/productos.json');
+    }
+    
+    crmApi.getServices = function(){
+      return  $http.get('/servicios.json');
+    }
+    
+    crmApi.getProductosDetallesByFacturaId = function(facturaId){
+      return $http.get('/detalle_facturas/getproductosdetallefacturabyid/'+facturaId);
+    }
+    
+    crmApi.getServiciosDetallesByFacturaId = function(facturaId){
+      return $http.get('/detalle_facturas/getserviciosdetallefacturabyid/'+facturaId);
+    }
+    
+    crmApi.postDetalleFactura = function(detalleFacturaToPost){
+      var request = {
+        method: 'POST',
+        url: '/detalle_facturas.json',
+        headers: {
+           'Content-Type': "application/json; charset=utf-8"
+        },
+        data: detalleFacturaToPost
+      };
+      return $http(request);
+    }
+    
+    crmApi.deleteDetallesFactura = function(factura_id){
+      var request = {
+        method: 'DELETE',
+        url: '/detalle_facturas/destroydetallesbyfacturaid/'+factura_id,
+        headers:{
+          'Content-Type': "application/json; charset=utf-8"
+        }
+      }
+      return $http(request);
+    }
+    
+    crmApi.GetClientes = function(){
+      return $http.get("/empresaclientes.json/");
+    }
+    
+    return crmApi;
+    
+  }]);
+  
+  app.factory('crmModel', [function(){
+    var crmModel = {};
+    
+    crmModel.FacItem =  class FacItem{ 
+            constructor(_facId,_productId, _productName, _unitPrice, _qty, _discount, _total, type){
+              this.facturaId = _facId;
+              this.producId = _productId || 0;
+              this.productName = _productName;
+              this.unitPrice = _unitPrice || 0;
+              this.qty = _qty || 1;
+              this.discount = _discount || 0;
+              this._total = _total ||  0;
+              this.type = type;
+            }
+              get total(){
+                this.subtotal = this.qty * this.unitPrice;
+                //console.log(this.subtotal);
+                return this.subtotal - (this.subtotal * (this.discount/100));
+              };
+              
+              set total(value){
+                this._total = value; 
+              }
+            
+          }
+          
+    return crmModel; 
+  }]);
+  
+  app.controller('ProductsController', ['$scope','crmApi', 'crmModel', function($scope, crmApi, crmModel){
+    
+    var productCtrl = this;
+    
+    productCtrl.facList = []; 
+    productCtrl.list = []; //ProductList
+    productCtrl.listServices = [];
+    productCtrl.isAlreadyProducts = false;
+    productCtrl.isAlreadyServices = false;
+    productCtrl.totalFac = 0;
+    
+    productCtrl.init = function(factura_id){
+      productCtrl.factura_id = factura_id;
+      if(productCtrl.factura_id > 0){
+        productCtrl.listarDetallesFactura();
+      }
+    }
+    
+    productCtrl.listarDetallesFactura = function(){
+      crmApi.getProductosDetallesByFacturaId(productCtrl.factura_id)
+          .success(function(data, status, headers, config){
+            data.forEach(function(item, i){
+              let newFacItem = new crmModel.FacItem(item.facturaId, item.producId ,item.productName, item.unitPrice, item.qty, item.discount, 0, 'product');
+              productCtrl.facList.push(newFacItem);
+            });
+            //constructor(_facId,_productId, _productName, _unitPrice, _qty, _discount, _total, type){
+          });
+      crmApi.getServiciosDetallesByFacturaId(productCtrl.factura_id)
+          .success(function(data, status, headers, config){
+            console.log(data);
+            data.forEach(function(item, i){
+              let newFacItemServ = new crmModel.FacItem(item.facturaId, item.producId ,item.productName, item.unitPrice, item.qty, item.discount, 0, 'service');
+              productCtrl.facList.push(newFacItemServ);
+            });
+          });
+    }      
+    
+    productCtrl.calcularTotalFac = function(){
+      productCtrl.totalFac = 0;
+      productCtrl.facList.forEach(function(item, i){
+        productCtrl.totalFac += item.total;
+      });
+      return productCtrl.totalFac;
+    }
+    
+    productCtrl.listarProductos = function(){
+      productCtrl.filterProducts = '';
+      if (!productCtrl.isAlreadyProducts){
+        crmApi.getProducts()
+          .success(function(data, status, headers, config) {
+            productCtrl.list = data;
+          });
+        productCtrl.isAlreadyProducts = true;
+      }
+    }
+    
+    productCtrl.listarServicios = function(){
+      productCtrl.filterServices = '';
+      if(!productCtrl.isAlreadyServices){
+       crmApi.getServices()
+        .success(function(data, status, headers, config) {
+          productCtrl.listServices = data;
+          console.log(data);
+        });
+        productCtrl.isAlreadyServices = true;
+      }
+    }
+    
+    productCtrl.agregarProducto = function(productToAdd, type){
+      if (productToAdd != null){
+        if (!productCtrl.esItemFacturado(productToAdd)){
+          var newFacItem = new crmModel.FacItem(productCtrl.factura_id, productToAdd.id, productToAdd.nombre, productToAdd.precio, 0, 0, 0, type);
+          productCtrl.facList.push(newFacItem);  
+        }
+      }
+    }
+    
+    productCtrl.esItemFacturado = function(productToAdd){
+        let esItemFacturado = false;
+        productCtrl.facList.some(function(item, i){
+          if(item.productName === productToAdd.nombre){
+            esItemFacturado = true;
+            return true;
+          }
+        });
+        return esItemFacturado;
+    }
+    
+    productCtrl.eliminarProducto = function(productToRemove){
+      let indexProductToRemove = productCtrl.list.indexOf(productToRemove);
+      if (indexProductToRemove != null){ 
+        productCtrl.facList.splice(indexProductToRemove, 1);
+      }
+    }
+    
+    productCtrl.guardarFacItems = function(){
+      crmApi.deleteDetallesFactura(productCtrl.factura_id)
+        .success(function(data, status, headers, config){
+          data.status = status;
+          data.headers = headers;
+          data.config = config;
+          console.log("resultado delete");
+          console.log(data);
+          if(status == 200){
+            productCtrl.facList.forEach(function(item, i){
+              var detFac = {
+                    factura_id: item.facturaId,
+                    cantidad: item.qty,
+                    total: item.total,
+                    descuento: item.discount,
+                    producto_id: "0",
+                    servicio_id: "0"
+              };
+              
+              if (item.type === "product"){
+                detFac.producto_id = item.producId;
+                console.log("producto: " + item.productName);
+              }else if (item.type === "service"){
+                detFac.servicio_id = item.producId;
+                console.log("servicio: " + item.productName);
+              }else{
+                sweetAlert("Invalid Item Type");
+                return;
+              }
+            
+              crmApi.postDetalleFactura(detFac)
+                .then(
+                  function(){
+                    sweetAlert("Esta factura se ha actualizado correctamente");
+                  }
+                  , 
+                  function(){
+                    sweetAlert("Ha ocurrido un error al actualizar esta factura");
+                  });
+            });//forEach
+          }
+        });//Success delete old
+      
+    };//function guargarFacItems
+  }]);
+  
+  app.controller("CustomerController", ["crmApi", function(crmApi){
+    var cusControl = this;
+    cusControl.CustomersList = [];
+    cusControl.customer = {};
+    
+    cusControl.getCustomers = function(){
+      crmApi.GetClientes()
+      .success(function(data, status, headers, config){
+        cusControl.customersList = data;
+        console.log("clientes: ");
+        console.log(data);
+      })
+    }
+    
+    cusControl.addCustomer = function(customer){
+      let nombrePersona = customer.personaNombre +  " " + customer.personaApellido; 
+      cusControl.customer.id = customer.id;
+      cusControl.customer.nombre = nombrePersona;
+      cusControl.customer.telefono = customer.personaMovil || customer.personaTelefono || customer.empresaTelefono;
+    }
+    
+    cusControl.init = function(factura_id){
+      cusControl.factura_id = factura_id;
+    }
+  }]);
+  
+  </script>
+  
+  <!--modal-productos-->
+  <div class="modal fade modal-productos"  tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="gridSystemModalLabel">Productos</h4>
+        </div>
+        
+        <style>
+          .product-item{
+            border: 1px solid black;
+          }
+          .product-item:hover{
+            border: 2px solid black;
+            background-color: #f2f2f2;
+          }
+        </style>
+        
+        <div class="modal-body">
+          <div class="row product-list">
+            <div class="col-md-12 form-group">
+              <input type="text" class="form-control" ng-model="productCtrl.filterProducts" placeholder="Buscar">
+            </div>          
+            <div class="col-md-4 product-item" ng-repeat="product in productCtrl.list | filter: productCtrl.filterProducts">
+              <form ng-submit="productCtrl.agregarProducto(product, 'product')" method="post">
+                <h3 class="text-info">{{product.nombre}}</h1>
+                <p>{{product.descripcion}}</p>
+                <h3>{{product.precio | currency:"$":0}} </h3>
+                <input type="submit" class="btn btn-primary" value="Agregar">
+              </form>
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+        
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  <!--modal-productos-->
+  
+  <!--modal-Servicios-->
+  <div class="modal fade modal-servicios"  tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="gridSystemModalLabel">Servicios</h4>
+        </div>
+        
+        <style>
+          .service-item{
+            border: 1px solid black;
+          }
+          .service-item:hover{
+            border: 2px solid black;
+            background-color: #f2f2f2;
+          }
+        </style>
+        
+        <div class="modal-body">
+          <div class="row product-list">
+            <div class="col-md-12 form-group">
+              <input type="text" class="form-control" ng-model="productCtrl.filterServices" placeholder="Buscar">
+            </div>
+            <div class="col-md-4 service-item" ng-repeat="service in productCtrl.listServices | filter:productCtrl.filterServices">
+              <form ng-submit="productCtrl.agregarProducto(service, 'service')" method="post">
+                <h3 class="text-info">{{service.nombre}}</h1>
+                <p>{{service.descripcion}}</p>
+                <h3>{{service.precio | currency:"$":0}} </h3>
+                <input type="submit" class="btn btn-primary" value="Agregar">
+              </form>
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button"  class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+        
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  <!--modal-Servicios-->
+  
+  
+  </div> <!--ng-controller-->
+  </div> <!--ng-app-->
+  
+  
+  </div>
+  </div>
+  <!--jQuery-->
+  <script>
+      /*
+    function agregarProducto(){
+      var $facItem = $('.fac-item').first().clone(true,true);
+      $facItem.find('input').val("");
+      $facItem.appendTo('.fac-list');
+    }
+    
+    function eliminarProducto(e){
+      $(e).closest('.fac-item').remove();
+      calcularTotal();
+    }
+    
+    var calcularTotal = function(){
+      var total = 0;
+         $('.fac-item').each(function(item){
+           var $this = $(this);
+          var cantidad = $this.find('* input.fac-item-cantidad').val();
+          var precioUnitario = $this.find('* input.fac-item-precioUnitario').val();
+          var descuento = $this.find('* input.fac-item-descuento').val();
+          var totalItem = (cantidad * precioUnitario);
+          var totalConDescuento = totalItem - (totalItem * (descuento/100));
+          console.log(totalConDescuento);
+          total += totalConDescuento;
+          $this.find('* .fac-item-total').val(totalConDescuento);
+          $('.report').find('.fac-total').text(total);
+          
+        })
+        //console.log("TOTAL: " + total);
+    }
+    
+    var guardarDetallesFactura = function(form){
+      var $form = $(form);
+      var $facList = $form.find('.fac-list');
+      $facList.find('.fac-item').each(function(index){
+        var detFac = {
+          factura_id: $('input#factura_id').val(),
+          cantidad: $(this).find('input.fac-item-cantidad').val(),
+          total: $(this).find('input.fac-item-total').val(),
+          descuento: $(this).find('input.fac-item-descuento').val(),
+          producto_id: "1",//$(this).find('input.fac-item-nombre').val(),
+          servicio_id: "1"
+        };
+        var response = postDetalleFactura(detFac, $form.attr('action'));
+        console.log("response: " + response);
+      });
+      
+    };
+    
+    
+    var postDetalleFactura = function(ObjdetalleFactura, _url){
+      var response = null;
+      $.ajax({
+        type: "post",
+        url: _url,
+        dataType : "json",<
+        contentType: "application/json; charset=utf-8",
+        data : JSON.stringify(ObjdetalleFactura),
+        success: function(data,textStatus, jqXHR){
+                      console.log("data= " + JSON.stringify(data));
+                       console.log("textStatus= " + textStatus);
+                      console.log("jqXHR= " + JSON.stringify(data));
+                      response = data;
+                  }
+      });
+      return response;
+    };
+    
+    
+    $('#formDetalleFactura').submit(function(ev){
+      ev.preventDefault();
+      guardarDetallesFactura(this);
+    });
+    */
+    
+    /*
+    $(document).ready(function(){
+      //Evento en todos los inputs para recalcular valores
+      $('.fac-list')
+       .find('.fac-item')
+       .find('* input')
+       .on('keyup',calcularTotal);
+     
+    });
+    
+    
+    var ajaxRequest = function(ObjdetalleFactura, _url, _type){
+      var _request = $.ajax({
+        type: _type,
+        url: _url,
+        dataType : "json",
+        contentType: "application/json; charset=utf-8",
+        data : JSON.stringify(ObjdetalleFactura)
+      });
+      return _request;
+    };
+    
+    var listaProductos = [];
+    
+    var listarProductos = () => {
+      var productos = ajaxRequest("","/productos.json", "get");
+      productos.done(function(data,textStatus, jqXHR){
+                      console.log("data= " + JSON.stringify(data));
+                      console.log("textStatus= " + textStatus);
+                      $(data).each(function(){console.log(this.id);});
+                      listaProductos = data;
+                  });
+    }
+    
+    */
+  </script>
+  <!--jQuery-->

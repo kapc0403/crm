@@ -1,0 +1,41 @@
+<%= form_for(@detalle_factura) do |f| %>
+  <% if @detalle_factura.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@detalle_factura.errors.count, "error") %> prohibited this detalle_factura from being saved:</h2>
+
+      <ul>
+      <% @detalle_factura.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :factura_id %><br>
+    <%= f.text_field :factura_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cantidad %><br>
+    <%= f.number_field :cantidad %>
+  </div>
+  <div class="field">
+    <%= f.label :total %><br>
+    <%= f.text_field :total %>
+  </div>
+  <div class="field">
+    <%= f.label :descuento %><br>
+    <%= f.text_field :descuento %>
+  </div>
+  <div class="field">
+    <%= f.label :producto_id %><br>
+    <%= f.text_field :producto_id %>
+  </div>
+  <div class="field">
+    <%= f.label :servicio_id %><br>
+    <%= f.text_field :servicio_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

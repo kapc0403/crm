@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tareas</h1>
+
+<div id="calendar">
+  <% calendar_for @tareas do |calendar| %>
+    <% calendar.day do |date, tareas| %>
+      <%= date.day %>
+    <% end %>
+  <% end %>
+</div>
+
+<font><h1 class="text-primary">Tareas :)</h1></font>
+<div class="col-md-10 center-block no-float form-login padding_top">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Asunto</th>
+        <th>Estado</th>
+        <th>Prioridad</th>
+        <th>Descripcion</th>
+        <th>Fechainicio</th>
+        <th>Fechafin</th>
+        <th>Usuarios</th>
+        <th>Empresaclientes</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @tareas.each do |tarea| %>
+        <tr>
+          <td><%= tarea.asunto %></td>
+          <td><%= tarea.estado %></td>
+          <td><%= tarea.prioridad %></td>
+          <td><%= tarea.descripcion %></td>
+          <td><%= tarea.fechaInicio %></td>
+          <td><%= tarea.fechaFin %></td>
+          <td><%= tarea.usuarios %></td>
+          <td><%= tarea.empresaclientes %></td>
+          <td><%= link_to 'Show', tarea %></td>
+          <td><%= link_to 'Edit', edit_tarea_path(tarea) %></td>
+          <td><%= link_to 'Destroy', tarea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= will_paginate @tareas %>
+<br>
+
+<div class="actions">
+  <a><%= link_to 'Nueva Tarea', new_tarea_path, :class=>" fa fa-plus-circle fa-2x btn btn-border-info btn-rounded btn-lg" %></a>
+</div>

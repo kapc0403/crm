@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615032512) do
+ActiveRecord::Schema.define(version: 20160705144406) do
 
   create_table "ciudads", force: :cascade do |t|
     t.string   "nombreCiudad"
@@ -28,10 +28,24 @@ ActiveRecord::Schema.define(version: 20160615032512) do
     t.datetime "updated_at",         null: false
   end
 
-  create_table "empresa_clientes", force: :cascade do |t|
-    t.string   "tipoCedula"
-    t.string   "cedula"
-    t.string   "fechaNacimiento"
+  create_table "detalle_facturas", force: :cascade do |t|
+    t.integer  "factura_id"
+    t.integer  "cantidad"
+    t.string   "total"
+    t.string   "descuento"
+    t.integer  "producto_id"
+    t.integer  "servicio_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "detalle_facturas", ["factura_id"], name: "index_detalle_facturas_on_factura_id"
+  add_index "detalle_facturas", ["producto_id"], name: "index_detalle_facturas_on_producto_id"
+  add_index "detalle_facturas", ["servicio_id"], name: "index_detalle_facturas_on_servicio_id"
+
+  create_table "empresaclientes", force: :cascade do |t|
+    t.string   "numidentificacion"
+    t.date     "fechaNacimiento"
     t.string   "personaNombre"
     t.string   "personaApellido"
     t.string   "personaTelefono"
@@ -44,16 +58,43 @@ ActiveRecord::Schema.define(version: 20160615032512) do
     t.string   "empresaTelefono"
     t.string   "empresaEmail"
     t.string   "paginaWeb"
-    t.string   "foto"
+    t.string   "foto_file_name"
+    t.string   "foto_content_type"
+    t.integer  "foto_file_size"
+    t.datetime "foto_updated_at"
     t.string   "tipo"
-    t.string   "fechaInicio"
-    t.string   "fechaFin"
-    t.integer  "usuarios_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.date     "fechaInicio"
+    t.date     "fechaFin"
+    t.integer  "usuario_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
-  add_index "empresa_clientes", ["usuarios_id"], name: "index_empresa_clientes_on_usuarios_id"
+  add_index "empresaclientes", ["usuario_id"], name: "index_empresaclientes_on_usuario_id"
+
+  create_table "estadofacturas", force: :cascade do |t|
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "facturas", force: :cascade do |t|
+    t.date     "fecha"
+    t.date     "fechafin"
+    t.string   "ordencompra"
+    t.string   "condiciones"
+    t.integer  "usuario_id"
+    t.integer  "empresacliente_id"
+    t.integer  "personacliente_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "estadofactura_id"
+  end
+
+  add_index "facturas", ["empresacliente_id"], name: "index_facturas_on_empresacliente_id"
+  add_index "facturas", ["estadofactura_id"], name: "index_facturas_on_estadofactura_id"
+  add_index "facturas", ["personacliente_id"], name: "index_facturas_on_personacliente_id"
+  add_index "facturas", ["usuario_id"], name: "index_facturas_on_usuario_id"
 
   create_table "modelo_personalizados", force: :cascade do |t|
     t.string   "colorApariencia"
@@ -74,27 +115,6 @@ ActiveRecord::Schema.define(version: 20160615032512) do
 
   add_index "modelo_personalizados", ["usuario_id"], name: "index_modelo_personalizados_on_usuario_id"
 
-  create_table "persona_clientes", force: :cascade do |t|
-    t.string   "tipoCedula"
-    t.string   "cedula"
-    t.string   "fechaNacimiento"
-    t.string   "nombre"
-    t.string   "apellido"
-    t.string   "telefono"
-    t.string   "movil"
-    t.string   "email"
-    t.string   "direccion"
-    t.string   "foto"
-    t.string   "tipo"
-    t.string   "fechaInicio"
-    t.string   "fechaFin"
-    t.integer  "usuarios_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "persona_clientes", ["usuarios_id"], name: "index_persona_clientes_on_usuarios_id"
-
   create_table "productos", force: :cascade do |t|
     t.string   "nombre"
     t.integer  "codigo"
@@ -113,7 +133,6 @@ ActiveRecord::Schema.define(version: 20160615032512) do
   create_table "proveedors", force: :cascade do |t|
     t.string   "tipoCedula"
     t.string   "cedula"
-    t.string   "fechaNacimiento"
     t.string   "personaNombre"
     t.string   "personaApellido"
     t.string   "personaTelefono"
@@ -128,40 +147,64 @@ ActiveRecord::Schema.define(version: 20160615032512) do
     t.string   "paginaWeb"
     t.string   "foto"
     t.string   "cuentaContable"
-    t.string   "fechaInicio"
-    t.string   "fechaFin"
     t.integer  "usuarios_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.date     "fechaNacimiento"
+    t.date     "fechaInicio"
+    t.date     "fechaFin"
   end
 
   add_index "proveedors", ["usuarios_id"], name: "index_proveedors_on_usuarios_id"
 
+  create_table "seguimientos", force: :cascade do |t|
+    t.integer  "empresacliente_id"
+    t.integer  "tiposeguimiento_id"
+    t.text     "descripcion"
+    t.integer  "usuario_id"
+    t.datetime "fecha"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "seguimientos", ["empresacliente_id"], name: "index_seguimientos_on_empresacliente_id"
+  add_index "seguimientos", ["tiposeguimiento_id"], name: "index_seguimientos_on_tiposeguimiento_id"
+  add_index "seguimientos", ["usuario_id"], name: "index_seguimientos_on_usuario_id"
+
   create_table "servicios", force: :cascade do |t|
     t.string   "nombre"
-    t.integer  "codigo"
+    t.string   "codigo"
     t.string   "disponibilidad"
-    t.integer  "precio"
-    t.string   "descripcion"
-    t.integer  "usuarios_id"
+    t.string   "precio"
+    t.string   "descripción"
+    t.integer  "usuario_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
-  add_index "servicios", ["usuarios_id"], name: "index_servicios_on_usuarios_id"
+  add_index "servicios", ["usuario_id"], name: "index_servicios_on_usuario_id"
 
-  create_table "table_welcomes", force: :cascade do |t|
-    t.string   "nombreEmpresa"
-    t.string   "moneda"
-    t.string   "logo"
-    t.string   "nombreEncargado"
-    t.string   "telefonoEncargado"
-    t.string   "telEmpresa"
-    t.string   "direccionEmpresa"
-    t.string   "correoEncargado"
-    t.string   "correoEmpresa"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+  create_table "tareas", force: :cascade do |t|
+    t.string   "asunto"
+    t.string   "estado"
+    t.string   "prioridad"
+    t.string   "descripcion"
+    t.date     "fechaInicio"
+    t.date     "fechaFin"
+    t.integer  "usuarios_id"
+    t.integer  "empresaclientes_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "tareas", ["empresaclientes_id"], name: "index_tareas_on_empresaclientes_id"
+  add_index "tareas", ["usuarios_id"], name: "index_tareas_on_usuarios_id"
+
+  create_table "tiposeguimientos", force: :cascade do |t|
+    t.string   "nombre"
+    t.boolean  "activo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "usuarios", force: :cascade do |t|
@@ -181,10 +224,12 @@ ActiveRecord::Schema.define(version: 20160615032512) do
     t.string   "rol"
     t.string   "telefono"
     t.string   "movil"
-    t.string   "estado"
-    t.string   "foto"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "foto_file_name"
+    t.string   "foto_content_type"
+    t.integer  "foto_file_size"
+    t.datetime "foto_updated_at"
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true
@@ -205,6 +250,8 @@ ActiveRecord::Schema.define(version: 20160615032512) do
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
     t.string   "nit"
+    t.string   "prefijoconsecutivo"
+    t.integer  "sufijoconsecutivo"
   end
 
 end

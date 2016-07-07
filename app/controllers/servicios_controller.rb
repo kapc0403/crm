@@ -4,7 +4,7 @@ class ServiciosController < ApplicationController
   # GET /servicios
   # GET /servicios.json
   def index
-    @servicios = Servicio.all
+    @servicios = Servicio.paginate(page: params[:page], per_page:15).all
   end
 
   # GET /servicios/1
@@ -69,6 +69,6 @@ class ServiciosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def servicio_params
-      params.require(:servicio).permit(:nombre, :codigo, :disponibilidad, :precio, :descripcion, :usuarios_id)
+      params.require(:servicio).permit(:nombre, :codigo, :disponibilidad, :precio, :descripción, :usuario_id)
     end
 end

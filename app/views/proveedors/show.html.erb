@@ -1,104 +1,56 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1>Cliente: <%= @proveedor.personaNombre %> <%= @proveedor.personaApellido %> </h1>
+  </div>
+  <div class="panel-body">
+    <d1>
+      <dt class="text-info">CC</dt>
+      <dd><%= @proveedor.cedula %></dd>
+      <dt class="text-info">Fecha Nacimiento:</dt>
+      <dd><%= @proveedor.fechaNacimiento %></dd>
+      <dt class="text-info">Telefono:</dt>
+      <dd><%= @proveedor.personaTelefono %></dd>
+      <dt class="text-info">Móvil:</dt>
+      <dd><%= @proveedor.personaMovil %></dd>
+      <dt class="text-info">Email:</dt>
+      <dd><%= @proveedor.personaEmail %></dd>
+      <dt class="text-info">Dirección:</dt>
+      <dd><%= @proveedor.personaDireccion %></dd>
+    </d1>
+  </div>
+</div>
 
-<p>
-  <strong>Tipocedula:</strong>
-  <%= @proveedor.tipoCedula %>
-</p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1>Empresa: <%= @proveedor.empresaNombre %></h1>
+  </div>
+  <div class="panel-body">
+    <d1>
+      <dt class="text-info">NIT</dt>
+      <dd><%= @proveedor.nit %></dd>
+      <dt class="text-info">Dirección:</dt>
+      <dd><%= @proveedor.empresaDireccion %></dd>
+      <dt class="text-info">Telefono:</dt>
+      <dd><%= @proveedor.empresaTelefono %></dd>
+      <dt class="text-info">Email:</dt>
+      <dd><%= @proveedor.empresaEmail %></dd>
+      <dt class="text-info">Pagina Web:</dt>
+      <dd><%= @proveedor.paginaWeb %></dd>
+      <dt class="text-info">Foto:</dt>
+      <dd><%= @proveedor.foto %></dd>
+      <dt class="text-info">Cuenta Contable:</dt>
+      <dd><%= @proveedor.cuentaContable %></dd>
+      <dt class="text-info">Fecha Inicio de Contrato:</dt>
+      <dd><%= @proveedor.fechaInicio %></dd>
+      <dt class="text-info">Fecha Fin de Contrato:</dt>
+      <dd><%= @proveedor.fechaFin %></dd>
+      <dt class="text-info">Usuario:</dt>
+      <dd><%= @proveedor.usuarios_id %></dd>
+    </d1>
+  </div>
+</div>
 
-<p>
-  <strong>Cedula:</strong>
-  <%= @proveedor.cedula %>
-</p>
-
-<p>
-  <strong>Fechanacimiento:</strong>
-  <%= @proveedor.fechaNacimiento %>
-</p>
-
-<p>
-  <strong>Personanombre:</strong>
-  <%= @proveedor.personaNombre %>
-</p>
-
-<p>
-  <strong>Personaapellido:</strong>
-  <%= @proveedor.personaApellido %>
-</p>
-
-<p>
-  <strong>Personatelefono:</strong>
-  <%= @proveedor.personaTelefono %>
-</p>
-
-<p>
-  <strong>Personamovil:</strong>
-  <%= @proveedor.personaMovil %>
-</p>
-
-<p>
-  <strong>Personaemail:</strong>
-  <%= @proveedor.personaEmail %>
-</p>
-
-<p>
-  <strong>Personadireccion:</strong>
-  <%= @proveedor.personaDireccion %>
-</p>
-
-<p>
-  <strong>Nit:</strong>
-  <%= @proveedor.nit %>
-</p>
-
-<p>
-  <strong>Empresanombre:</strong>
-  <%= @proveedor.empresaNombre %>
-</p>
-
-<p>
-  <strong>Empresadireccion:</strong>
-  <%= @proveedor.empresaDireccion %>
-</p>
-
-<p>
-  <strong>Empresatelefono:</strong>
-  <%= @proveedor.empresaTelefono %>
-</p>
-
-<p>
-  <strong>Empresaemail:</strong>
-  <%= @proveedor.empresaEmail %>
-</p>
-
-<p>
-  <strong>Paginaweb:</strong>
-  <%= @proveedor.paginaWeb %>
-</p>
-
-<p>
-  <strong>Foto:</strong>
-  <%= @proveedor.foto %>
-</p>
-
-<p>
-  <strong>Cuentacontable:</strong>
-  <%= @proveedor.cuentaContable %>
-</p>
-
-<p>
-  <strong>Fechainicio:</strong>
-  <%= @proveedor.fechaInicio %>
-</p>
-
-<p>
-  <strong>Fechafin:</strong>
-  <%= @proveedor.fechaFin %>
-</p>
-
-<p>
-  <strong>Usuarios:</strong>
-  <%= @proveedor.usuarios %>
-</p>
-
-<%= link_to 'Edit', edit_proveedor_path(@proveedor) %> |
-<%= link_to 'Back', proveedors_path %>
+<div>
+  <a><%= link_to 'Editar', edit_proveedor_path(@proveedor), :class=>"btn btn-primary fa fa-pencil-square-o fa-2x" %></a>
+  <a><%= link_to 'Volver', :back, :class=>"btn btn-primary fa fa-arrow-circle-left fa-2x" %></a>
+</div>

@@ -1,6 +1,8 @@
-<h1>Editing Servicio</h1>
+<h1>Editar Servicio</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @servicio %> |
-<%= link_to 'Back', servicios_path %>
+<div class="actions">
+  <a><%= link_to 'Ver', @servicio, :class=>"btn btn-primary fa fa-eye fa-2x" %></a>
+  <a><%= link_to 'Volver', :back, :class=>" fa fa-arrow-circle-left fa-2x btn btn-primary" %></a>
+</div>

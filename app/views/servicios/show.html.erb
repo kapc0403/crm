@@ -1,34 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1>Servicio: <%= @servicio.nombre %></h1>
+  </div>
+  <div class="panel-body">
+    <d1 class="dl-horizontal">
+      <dt class="text-info">Codigo:</dt>
+      <dd><%= @servicio.codigo %></dd>
+      <dt class="text-info">Disponibilidad:</dt>
+      <dd><%= @servicio.disponibilidad %></dd>
+      <dt class="text-info">Precio:</dt>
+      <dd><%= @servicio.precio %></dd>
+      <dt class="text-info">Descripcion:</dt>
+      <dd><%= @servicio.descripción %></dd>
+      <dt class="text-info">Usuario:</dt>
+      <dd><%= @servicio.usuario.nombre %> <%= @servicio.usuario.apellido %></dd>
+    </d1>
+  </div>
+</div>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @servicio.nombre %>
-</p>
-
-<p>
-  <strong>Codigo:</strong>
-  <%= @servicio.codigo %>
-</p>
-
-<p>
-  <strong>Disponibilidad:</strong>
-  <%= @servicio.disponibilidad %>
-</p>
-
-<p>
-  <strong>Precio:</strong>
-  <%= @servicio.precio %>
-</p>
-
-<p>
-  <strong>Descripcion:</strong>
-  <%= @servicio.descripcion %>
-</p>
-
-<p>
-  <strong>Usuarios:</strong>
-  <%= @servicio.usuarios %>
-</p>
-
-<%= link_to 'Edit', edit_servicio_path(@servicio) %> |
-<%= link_to 'Back', servicios_path %>
+<div>
+  <a><%= link_to 'Editar', edit_servicio_path(@servicio), :class=>"btn btn-primary fa fa-pencil-square-o fa-2x" %></a>
+  <a><%= link_to 'Volver', :back, :class=>"btn btn-primary fa fa-arrow-circle-left fa-2x" %></a>
+</div>

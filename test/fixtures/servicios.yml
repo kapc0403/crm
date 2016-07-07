@@ -2,16 +2,16 @@
 
 one:
   nombre: MyString
-  codigo: 1
+  codigo: MyString
   disponibilidad: MyString
-  precio: 1
-  descripcion: MyString
-  usuarios_id: 
+  precio: MyString
+  descripción: MyString
+  usuario_id: 
 
 two:
   nombre: MyString
-  codigo: 1
+  codigo: MyString
   disponibilidad: MyString
-  precio: 1
-  descripcion: MyString
-  usuarios_id: 
+  precio: MyString
+  descripción: MyString
+  usuario_id: 

@@ -1,0 +1,166 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1 style="color:white;"><%= @factura.estadofactura.nombre %> N° <%= @factura.ordencompra %></h1>
+  </div>
+    <div class="panel-body">
+      <dl class="dl-horizontal">
+        <dt class="text-info">Fecha Inicio:</dt>
+        <dd><%= @factura.fecha %></dd>
+        
+        <dt class="text-info"> Fecha Fin:</dt>
+        <dd><%= @factura.fechafin %></dd>
+        
+        <dt class="text-info">Fecha:</dt>
+        <dd><%= @factura.fecha %></dd>
+        
+        <dt class="text-info">Empresa cliente:</dt>
+        <dd><%= "<b>No Registra</b>".html_safe || @factura.empresacliente.empresaNombre %></dd>
+        
+        <dt class="text-info">Vendedor:</dt>
+        <dd><%= @factura.usuario.nombre %> <%= @factura.usuario.apellido %></dd>
+        
+        <dt class="text-info">Condiciones:</dt>
+        <dd><%= @factura.condiciones %></dd>
+      </dl>
+        <p id="notice"><%= notice %></p>
+    </div>
+</div>
+
+
+
+<div ng-app="ShowFactura" ng-controller="DetalleFacturaController as dfControl">
+    <input type="hidden" ng-init="dfControl.init(<%= @factura.id %>)">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h1 style="color:white;">Detalles</h1>
+    </div>
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table">
+          <theader>
+            <tr>
+              <th>N°</th>
+              <th>Descripción</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th>Descuento</th>
+              <th>Total</th>
+            </tr>
+          </theader>
+          <tbody>
+            <tr ng-repeat="df in dfControl.FacList track by $index">
+              <td>{{$index+1}}</td>
+              <td>{{df.productName}}</td>
+              <td>{{df.qty}}</td>
+              <td>{{df.unitPrice | currency:"$":0}}</td>
+              <td>{{df.discount}} %</td>
+              <td>{{df.total | currency:"$":0}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>  
+    </div>
+  </div>
+</div>
+
+
+
+
+<%= link_to 'Editar', edit_factura_path(@factura), :class=>"btn btn-primary  fa fa-2x" %>
+<%= link_to 'Volver', :back, :class=>"btn btn-primary fa fa-2x" %>
+
+  <% if @factura.estadofactura_id == 1 %>
+    <a><%= link_to "Convertir a Pedido", "", :href=> "/changestatepedido/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+    <a><%= link_to "Convertir a Orden", "", :href=> "/changestateorden/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+    <a><%= link_to "Convertir a Factura", "", :href=> "/changestatefactura/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+  <%end%>
+  <% if @factura.estadofactura_id == 2 %>
+    <a><%= link_to "Convertir a Propuesta", "", :href=> "/changestatepropuesta/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+    <a><%= link_to "Convertir a Orden", "", :href=> "/changestateorden/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+    <a><%= link_to "Convertir a Factura", "", :href=> "/changestatefactura/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+  <%end%>
+  <% if @factura.estadofactura_id == 3 %>
+    <a><%= link_to "Convertir a Propuesta", "", :href=> "/changestatepropuesta/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+    <a><%= link_to "Convertir a Pedido", "", :href=> "/changestatepedido/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+    <a><%= link_to "Convertir a Factura", "", :href=> "/changestatefactura/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+  <%end%>
+  <% if @factura.estadofactura_id == 4 %>
+    <a><%= link_to "Convertir a Propuesta", "", :href=> "/changestatepropuesta/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+    <a><%= link_to "Convertir a Pedido", "", :href=> "/changestatepedido/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+    <a><%= link_to "Convertir a Orden", "", :href=> "/changestateorden/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+  <%end%>
+
+
+
+<script>
+var app = angular.module('ShowFactura',[]);
+
+app.controller('DetalleFacturaController', ['$http','crmModel',function($http, crmModel){
+  var dfControl = this;
+  dfControl.FacList = [];
+  
+  dfControl.init = function(factura_id){
+    dfControl.factura_id = factura_id;
+    console.log(dfControl.factura_id);
+    dfControl.listarDetallesFactura();
+  }
+  dfControl.getProductosDetallesByFacturaId = function(facturaId){
+    return $http.get('/detalle_facturas/getproductosdetallefacturabyid/'+facturaId);
+  }
+  
+  dfControl.getServiciosDetallesByFacturaId = function(facturaId){
+    return $http.get('/detalle_facturas/getserviciosdetallefacturabyid/'+facturaId);
+  }
+  
+  dfControl.listarDetallesFactura = function(){
+    dfControl.getProductosDetallesByFacturaId(dfControl.factura_id)
+        .success(function(data, status, headers, config){
+          data.forEach(function(item, i){
+            let newFacItem = new crmModel.FacItem(item.facturaId, item.producId ,item.productName, item.unitPrice, item.qty, item.discount, 0, 'product');
+            dfControl.FacList.push(newFacItem);
+          });
+          //constructor(_facId,_productId, _productName, _unitPrice, _qty, _discount, _total, type){
+        });
+    dfControl.getServiciosDetallesByFacturaId(dfControl.factura_id)
+        .success(function(data, status, headers, config){
+          console.log(data);
+          data.forEach(function(item, i){
+            let newFacItemServ = new crmModel.FacItem(item.facturaId, item.producId ,item.productName, item.unitPrice, item.qty, item.discount, 0, 'service');
+            dfControl.FacList.push(newFacItemServ);
+          });
+        });
+  }      
+  
+}]);
+
+
+app.factory('crmModel', [function(){
+  var crmModel = {};
+  
+  crmModel.FacItem =  class FacItem{ 
+          constructor(_facId,_productId, _productName, _unitPrice, _qty, _discount, _total, type){
+            this.facturaId = _facId;
+            this.producId = _productId || 0;
+            this.productName = _productName;
+            this.unitPrice = _unitPrice || 0;
+            this.qty = _qty || 1;
+            this.discount = _discount || 0;
+            this._total = _total ||  0;
+            this.type = type;
+          }
+            get total(){
+              this.subtotal = this.qty * this.unitPrice;
+              //console.log(this.subtotal);
+              return this.subtotal - (this.subtotal * (this.discount/100));
+            };
+            
+            set total(value){
+              this._total = value; 
+            }
+          
+        }
+        
+  return crmModel; 
+}]);
+
+</script>

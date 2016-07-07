@@ -1,0 +1,97 @@
+<%= form_for(@tarea) do |f| %>
+  <% if @tarea.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tarea.errors.count, "error") %> prohibited this tarea from being saved:</h2>
+
+      <ul>
+      <% @tarea.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row fac-item well">
+        <div class="text-primary">
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <center><font><h1 class="text-primary">Tarea a Realizar</h1></font></center>
+            </div>
+            <div class="col-md-10 col-md-offset-1">
+              <div class="field">
+                <%= f.label :"Asunto" %><br>
+                <%= f.text_field :asunto, placeholder: "", :class=>"form-control"%>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+              <div class="field">
+                <%= f.label :"Fecha Inicio" %><br>
+                <%= f.text_field :fechaInicio, type: "date", :class=>"form-control" %>
+              </div>
+            </div>
+            <div class="col-md-5 col-md-offset-0">
+              <div class="field">
+                <%= f.label :"Estado" %><br>
+                <%= f.text_field :estado, placeholder: "", :class=>"form-control"%>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+              <div class="field">
+                <%= f.label :"Prioridad" %><br>
+                <%= f.text_field :prioridad, placeholder: "", :class=>"form-control"%>
+              </div>
+            </div>
+            <div class="col-md-5 col-md-offset-0">
+              <div class="field">
+                <%= f.label :"Fecha Fin" %><br>
+                <%= f.text_field :fechaFin, type: "date", :class=>"form-control" %>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+              <div class="field">
+                <%= f.label :"Usuario" %><br>
+                <%= f.text_field :usuarios_id, placeholder: "", :class=>"form-control"%>
+              </div>
+            </div>
+            <div class="col-md-5 col-md-offset-0">
+              <div class="field">
+                <%= f.label :"Cliente" %><br>
+                <%= f.text_field :empresaclientes_id, placeholder: "", :class=>"form-control"%>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="field">
+                <%= f.label :"Descripción" %><br>
+                <%= f.text_field :descripcion, placeholder: "", :class=>"form-control"%>
+              </div>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="actions">
+        <a><%= f.submit 'Guardar Tarea', :class=>"btn btn-rouder-primary btn-block fa fa-2x" %></a>
+      </div>
+    </div>
+  </div>
+  
+<% end %>
