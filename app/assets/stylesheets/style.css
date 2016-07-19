@@ -1,9 +1,89 @@
-.form-control{
-    border: none;
-    border-bottom: 1px solid;
-    outline: none;
-    width: 100%;
+
+
+body{
+    background-color: #f3f3f3;
+}
+
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+
+body{
+    background: url(https://unsplash.imgix.net/photo-1415226581130-91cb7f52f078?q=75&fm=jpg&s=859a0a6f863f8eb93a489c98402e687b);
+	background-color: #444;
+    background-size:   cover;
+    background-repeat: no-repeat;
+    background-position: center center;  
+    /*background: url(https://unsplash.imgix.net/photo-1415226581130-91cb7f52f078?q=75&fm=jpg&s=859a0a6f863f8eb93a489c98402e687b),url(http://mymaplist.com/img/parallax/pinlayer1.png),url(http://mymaplist.com/img/parallax/back.png);    
+*/
+}
+
+.vertical-offset-100{
+    padding-top:100px;
+}
+.login .user-row{
+    text-align: center;
+    font-size: 30px;
+}
+
+.login .img-responsive {
     display: block;
-    padding: 10px 0px;
-    font-size: 1.2em;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+.login.panel {
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+.login label{
+    display: block;
+    width: 100%;
+    color: #337ab7;
+    text-shadow:#4cae4c;
+    text-align: center;
+}
+.login hr{
+    margin: 5px;
+}
+
+.mini-submenu{
+  /*display:none;*/  
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0);  
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  border-radius: 4px;
+  padding: 9px;  
+  /*position: relative;*/
+  width: 42px;
+
+}
+
+.mini-submenu:hover{
+  cursor: pointer;
+}
+
+.mini-submenu .icon-bar {
+  border-radius: 1px;
+  display: block;
+  height: 2px;
+  width: 22px;
+  margin-top: 3px;
+  background-color: #000;
+}
+
+.list-group {
+  display:none;
+  position: absolute;
+}
+
+#slide-submenu{
+  background: rgba(0, 0, 0, 0.45);
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 4px;
+  cursor: pointer;
 }

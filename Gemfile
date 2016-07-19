@@ -31,6 +31,7 @@ gem 'sweetalert-rails'
 gem 'angularjs-rails'
 gem 'will_paginate'
 gem 'mail'
+gem "watu_table_builder", :require => "table_builder"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -1,54 +1,79 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Tareas</h1>
-
+<h1>Tareas</h1>
 <div id="calendar">
-  <% calendar_for @tareas do |calendar| %>
-    <% calendar.day do |date, tareas| %>
-      <%= date.day %>
-    <% end %>
-  <% end %>
-</div>
-
-<font><h1 class="text-primary">Tareas :)</h1></font>
-<div class="col-md-10 center-block no-float form-login padding_top">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Asunto</th>
-        <th>Estado</th>
-        <th>Prioridad</th>
-        <th>Descripcion</th>
-        <th>Fechainicio</th>
-        <th>Fechafin</th>
-        <th>Usuarios</th>
-        <th>Empresaclientes</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+  <h2 id="month">
+    <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%d-%m-%Y") %>
+    <%= @date.strftime("%B-%Y") %>
+    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%d-%m-%Y") %>
+  </h2>
   
-    <tbody>
-      <% @tareas.each do |tarea| %>
-        <tr>
-          <td><%= tarea.asunto %></td>
-          <td><%= tarea.estado %></td>
-          <td><%= tarea.prioridad %></td>
-          <td><%= tarea.descripcion %></td>
-          <td><%= tarea.fechaInicio %></td>
-          <td><%= tarea.fechaFin %></td>
-          <td><%= tarea.usuarios %></td>
-          <td><%= tarea.empresaclientes %></td>
-          <td><%= link_to 'Show', tarea %></td>
-          <td><%= link_to 'Edit', edit_tarea_path(tarea) %></td>
-          <td><%= link_to 'Destroy', tarea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+      <%= calendar_for @tareas, :year => @date.year, :month => @date.month do |calendar| %>
+    <%= calendar.head('Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado') %>
+      <%= calendar.day(:day_method => :fechaInicio) do |date, tareas, fin| %>
+        <%= date.day %>
+        <ul>
+          <% for tarea in tareas %>
+            <%if tarea.estado == "Por Hacer" %>
+              <li><bold><%= link_to tarea.asunto, tarea, :class=>"red" %></bold></li>
+            <%end%>
+            <%if tarea.estado == "En Proceso" %>
+              <li><bold><%= link_to tarea.asunto, tarea, :class=>"green" %></bold></li>
+            <%end%>
+            <%if tarea.estado == "Terminada" %>
+              <li><bold><%= link_to tarea.asunto, tarea, :class=>"blue" %></bold></li>
+            <%end%>
+          <%end%>
+        </ul>
       <% end %>
-    </tbody>
-  </table>
-</div>
-<%= will_paginate @tareas %>
-<br>
-
-<div class="actions">
-  <a><%= link_to 'Nueva Tarea', new_tarea_path, :class=>" fa fa-plus-circle fa-2x btn btn-border-info btn-rounded btn-lg" %></a>
+  <% end %>
+    </div>
+    
+    
+    <div class="col-xs-6 col-md-4">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title">Por Hacer</h3>
+        </div>
+        <div class="panel-body">
+          <% @task = Tarea.where("estado = ?", "Por Hacer") %>
+          <% @task.each do |task| %>
+            <li><%= link_to task.asunto, task %></li>
+          <%end%>
+        </div>
+      </div>
+      
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">En Proceso</h3>
+        </div>
+        <div class="panel-body">
+          <% @task = Tarea.where("estado = ?", "En Proceso") %>
+          <% @task.each do |task| %>
+            <li><%= link_to task.asunto, task %></li>
+          <%end%>
+        </div>
+      </div>
+      
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Terminadas</h3>
+        </div>
+        <div class="panel-body">
+          <% @task = Tarea.where("estado = ?", "Terminada") %>
+          <% @task.each do |task| %>
+            <li><%= link_to task.asunto, task %></li>
+          <%end%>
+        </div>
+      </div>
+      
+      <div class="actions">
+        <a><%= link_to 'Nueva Tarea', new_tarea_path, :class=>" fa fa-plus-circle fa-2x btn btn-border-primary btn-rounded btn-lg" %></a>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  
 </div>

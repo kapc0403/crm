@@ -1,36 +1,19 @@
-<div class="col-md-10 center-block no-float form-login padding_top">
-
-<div class="panel panel-info">
-  <div class="panel-heading"><center>Usuario</center></div>
-  
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-md-2">Nombre:</div>
-      <div class="col-md-8"><%= @user.nombre %></div>
-    </div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1> <%= @user.nombre %></h1>
   </div>
   <div class="panel-body">
-    <div class="row">
-      <div class="col-md-2">Correo:</div>
-      <div class="col-md-8"><%= @user.email %></div>
-    </div>
-  </div>
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-md-2">Usuario:</div>
-      <div class="col-md-8"><%= @user.nombreUsuario %></div>
-    </div>
-  </div>
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-md-2">Rol:</div>
-      <div class="col-md-8"><%= @user.rol %></div>
-    </div>
+    <d1>
+      <dt class="text-info">Email:</dt>
+      <dd><%= @user.email %></dd>
+      <dt class="text-info">Usuario:</dt>
+      <dd><%= @user.nombreUsuario %></dd>
+      <dt class="text-info">Rol:</dt>
+      <dd><%= @user.rol %></dd>
+    </d1>
   </div>
 </div>
 
 <div class="actions">
-  <a><%= link_to 'Back', :back, :class=>" fa fa-arrow-circle-o-left fa-2x btn btn-border-info btn-rounded btn-lg" %></a>
-</div>
-
+  <a><%= link_to 'Volver', :back, :class=>" fa fa-arrow-circle-left fa-2x btn btn-primary" %></a>
 </div>

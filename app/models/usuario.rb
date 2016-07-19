@@ -11,5 +11,8 @@ class Usuario < ActiveRecord::Base
       length: {in: 4..20, too_short: "Debes tener al menos 5 caracteres", too_long: "Puedes tener máximo 20 caracteres"},
       format: {with: /([A-Za-z0-9\-\_]+)/, message: "Tu usuario solo puede contener letras, numeros y guiones"}
             
-
+  def nombreCompletoUsuario
+    "#{nombre} #{apellido}"
+  end
+    
 end

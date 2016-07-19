@@ -12,18 +12,5 @@
  *
  *= require_tree .
  *= require_self
-
- *= require skins/skin-black-light
- *= require skins/skin-black
- *= require skins/skin-blue-light
- *= require skins/skin-blue
- *= require skins/skin-green-light
- *= require skins/skin-green
- *= require skins/skin-purple-light
- *= require skins/skin-purple
- *= require skins/skin-red-light
- *= require skins/skin-red
- *= require skins/skin-yellow-light
- *= require skins/skin-yellow
  *= require sweetalert
  */

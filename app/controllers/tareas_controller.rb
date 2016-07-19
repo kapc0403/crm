@@ -4,7 +4,8 @@ class TareasController < ApplicationController
   # GET /tareas
   # GET /tareas.json
   def index
-    @tareas = Tarea.paginate(page: params[:page], per_page:15).all
+    @tareas = Tarea.all
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
   end
 
   # GET /tareas/1

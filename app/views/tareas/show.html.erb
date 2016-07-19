@@ -1,44 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1>Tarea: <%= @tarea.asunto %></h1>
+  </div>
+  <div class="panel-body">
+    <d1>
+      <dt class="text-info">Fecha inicio de la Tarea:</dt>
+      <dd><%= @tarea.fechaInicio %></dd>
+      <dt class="text-info">Estado actual:</dt>
+      <dd><%= @tarea.estado %></dd>
+      <dt class="text-info">Prioridad:</dt>
+      <dd><%= @tarea.prioridad %></dd>
+      <dt class="text-info">Descripción:</dt>
+      <dd><%= @tarea.descripcion %></dd>
+      <dt class="text-info">Fecah fin de la Tarea:</dt>
+      <dd><%= @tarea.fechaFin %></dd>
+      <dt class="text-info">Encargado:</dt>
+      <dd><%= @tarea.usuarios_id %></dd>
+      <dt class="text-info">Cliente:</dt>
+      <dd><%= @tarea.empresaclientes_id %></dd>
+    </d1>
+  </div>
+</div>
 
-<p>
-  <strong>Asunto:</strong>
-  <%= @tarea.asunto %>
-</p>
-
-<p>
-  <strong>Estado:</strong>
-  <%= @tarea.estado %>
-</p>
-
-<p>
-  <strong>Prioridad:</strong>
-  <%= @tarea.prioridad %>
-</p>
-
-<p>
-  <strong>Descripcion:</strong>
-  <%= @tarea.descripcion %>
-</p>
-
-<p>
-  <strong>Fechainicio:</strong>
-  <%= @tarea.fechaInicio %>
-</p>
-
-<p>
-  <strong>Fechafin:</strong>
-  <%= @tarea.fechaFin %>
-</p>
-
-<p>
-  <strong>Usuarios:</strong>
-  <%= @tarea.usuarios %>
-</p>
-
-<p>
-  <strong>Empresaclientes:</strong>
-  <%= @tarea.empresaclientes %>
-</p>
-
-<%= link_to 'Edit', edit_tarea_path(@tarea) %> |
-<%= link_to 'Back', tareas_path %>
+<div class="actions">
+  <a><%= link_to 'Editar', edit_tarea_path(@tarea), :class=>"btn btn-primary fa fa-pencil-square-o fa-2x" %></a>
+  <a><%= link_to 'Volver', :back, :class=>" fa fa-arrow-circle-left fa-2x btn btn-primary" %></a>
+</div>

@@ -102,7 +102,7 @@
                 <div class="field form-group">
                   <%= f.label :"Usuario a cargo" %><br>
                   <%= f.collection_select(:usuario_id, Usuario.all, 
-                                      :id, :nombre,
+                                      :id, :nombreCompletoUsuario,
                                    {:prompt => false}, {:class=>"form-control", :style=>"padding:6px 0px;"}) %>
                 </div>
               </div>

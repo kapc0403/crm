@@ -31,13 +31,14 @@
             <div class="col-md-5 col-md-offset-1">
               <div class="field">
                 <%= f.label :"Fecha Inicio" %><br>
-                <%= f.text_field :fechaInicio, type: "date", :class=>"form-control" %>
+                <%= f.date_select :fechaInicio, :class=>"form-control" %>
               </div>
             </div>
             <div class="col-md-5 col-md-offset-0">
               <div class="field">
                 <%= f.label :"Estado" %><br>
-                <%= f.text_field :estado, placeholder: "", :class=>"form-control"%>
+                <%= f.select(:estado, ['Por Hacer', 'En Proceso', 'Terminada'], 
+                          {:include_blank => "Por favor seleccione..."}, {:class=>"form-control", :style=>"padding:6px 0px;"}) %>
               </div>
             </div>
           </div>
@@ -46,13 +47,14 @@
             <div class="col-md-5 col-md-offset-1">
               <div class="field">
                 <%= f.label :"Prioridad" %><br>
-                <%= f.text_field :prioridad, placeholder: "", :class=>"form-control"%>
+                <%= f.select(:prioridad, ['Baja', 'Media', 'Alta'], 
+                          {:include_blank => "Por favor seleccione..."}, {:class=>"form-control", :style=>"padding:6px 0px;"}) %>
               </div>
             </div>
             <div class="col-md-5 col-md-offset-0">
               <div class="field">
                 <%= f.label :"Fecha Fin" %><br>
-                <%= f.text_field :fechaFin, type: "date", :class=>"form-control" %>
+                <%= f.date_select :fechaFin, :class=>"form-control" %>
               </div>
             </div>
           </div>
@@ -61,7 +63,9 @@
             <div class="col-md-5 col-md-offset-1">
               <div class="field">
                 <%= f.label :"Usuario" %><br>
-                <%= f.text_field :usuarios_id, placeholder: "", :class=>"form-control"%>
+                <%= f.collection_select(:usuarios_id, Usuario.all, 
+                                      :id, :nombreCompletoUsuario,
+                                   {:prompt => false}, {:class=>"form-control", :style=>"padding:6px 0px;"}) %>
               </div>
             </div>
             <div class="col-md-5 col-md-offset-0">
@@ -76,7 +80,7 @@
             <div class="col-md-10 col-md-offset-1">
               <div class="field">
                 <%= f.label :"Descripción" %><br>
-                <%= f.text_field :descripcion, placeholder: "", :class=>"form-control"%>
+                <%= f.text_area :descripcion, placeholder: "", :class=>"form-control"%>
               </div>
             </div>
           </div>

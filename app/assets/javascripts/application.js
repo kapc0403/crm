@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require sweetalert
 //= require angular
+//= require_tree .
+
+$(document).ready(function() {
+    $('input#input_text, textarea#textarea1');
+  });
