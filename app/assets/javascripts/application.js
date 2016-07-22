@@ -14,5 +14,3 @@
 //= require jquery_ujs
 //= require sweetalert
 //= require angular
-//= require adminlte
-
