@@ -14,8 +14,5 @@
 //= require jquery_ujs
 //= require sweetalert
 //= require angular
-//= require_tree .
+//= require adminlte
 
-$(document).ready(function() {
-    $('input#input_text, textarea#textarea1');
-  });
