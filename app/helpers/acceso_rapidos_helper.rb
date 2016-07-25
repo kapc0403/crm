@@ -1,0 +1,2 @@
+module AccesoRapidosHelper
+end

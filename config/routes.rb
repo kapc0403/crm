@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :codigoicons
+  resources :menu_rapidos
+  resources :acceso_rapidos
+  resources :widgets
   resources :tareas
   resources :seguimientos
   resources :seguimientos

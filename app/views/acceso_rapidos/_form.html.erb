@@ -1,0 +1,30 @@
+<%= form_for(@acceso_rapido) do |f| %>
+  <% if @acceso_rapido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@acceso_rapido.errors.count, "error") %> prohibited this acceso_rapido from being saved:</h2>
+
+      <ul>
+      <% @acceso_rapido.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :icon %><br>
+    <%= f.select :icon, ['', '', ''], :include_blank => "Por favor seleccione..." %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

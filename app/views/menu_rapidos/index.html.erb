@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Menu Rapidos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Accesor1</th>
+      <th>Accesor2</th>
+      <th>Accesor3</th>
+      <th>Accesor4</th>
+      <th>Accesor5</th>
+      <th>Acceso6</th>
+      <th>Accesor7</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @menu_rapidos.each do |menu_rapido| %>
+      <tr>
+        <td><%= menu_rapido.usuario %></td>
+        <td><%= menu_rapido.accesor1 %></td>
+        <td><%= menu_rapido.accesor2 %></td>
+        <td><%= menu_rapido.accesor3 %></td>
+        <td><%= menu_rapido.accesor4 %></td>
+        <td><%= menu_rapido.accesor5 %></td>
+        <td><%= menu_rapido.acceso6 %></td>
+        <td><%= menu_rapido.accesor7 %></td>
+        <td><%= link_to 'Show', menu_rapido %></td>
+        <td><%= link_to 'Edit', edit_menu_rapido_path(menu_rapido) %></td>
+        <td><%= link_to 'Destroy', menu_rapido, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Menu rapido', new_menu_rapido_path %>

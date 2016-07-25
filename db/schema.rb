@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707201158) do
+ActiveRecord::Schema.define(version: 20160725140511) do
+
+  create_table "acceso_rapidos", force: :cascade do |t|
+    t.string   "nombre"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "icon"
+  end
 
   create_table "ciudads", force: :cascade do |t|
     t.string   "nombreCiudad"
@@ -96,24 +104,20 @@ ActiveRecord::Schema.define(version: 20160707201158) do
   add_index "facturas", ["personacliente_id"], name: "index_facturas_on_personacliente_id"
   add_index "facturas", ["usuario_id"], name: "index_facturas_on_usuario_id"
 
-  create_table "modelo_personalizados", force: :cascade do |t|
-    t.string   "colorApariencia"
-    t.string   "homeW1"
-    t.string   "homeW2"
-    t.string   "homeW3"
-    t.string   "homeW4"
-    t.string   "homeW5"
-    t.string   "homeW6"
-    t.string   "homeW7"
-    t.string   "homeW8"
-    t.string   "homeW9"
-    t.string   "homeW10"
+  create_table "menu_rapidos", force: :cascade do |t|
     t.integer  "usuario_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "accesor1"
+    t.string   "accesor2"
+    t.string   "accesor3"
+    t.string   "accesor4"
+    t.string   "accesor5"
+    t.string   "acceso6"
+    t.string   "accesor7"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "modelo_personalizados", ["usuario_id"], name: "index_modelo_personalizados_on_usuario_id"
+  add_index "menu_rapidos", ["usuario_id"], name: "index_menu_rapidos_on_usuario_id"
 
   create_table "productos", force: :cascade do |t|
     t.string   "nombre"
@@ -230,6 +234,7 @@ ActiveRecord::Schema.define(version: 20160707201158) do
     t.string   "foto_content_type"
     t.integer  "foto_file_size"
     t.datetime "foto_updated_at"
+    t.string   "estado"
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true
@@ -253,5 +258,26 @@ ActiveRecord::Schema.define(version: 20160707201158) do
     t.string   "prefijoconsecutivo"
     t.integer  "sufijoconsecutivo"
   end
+
+  create_table "widgets", force: :cascade do |t|
+    t.integer  "usuario_id"
+    t.string   "w1"
+    t.string   "w2"
+    t.string   "w3"
+    t.string   "w4"
+    t.string   "w5"
+    t.string   "w6"
+    t.string   "w7"
+    t.string   "w8"
+    t.string   "w9"
+    t.string   "w10"
+    t.string   "w11"
+    t.string   "w12"
+    t.string   "colorlayout"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "widgets", ["usuario_id"], name: "index_widgets_on_usuario_id"
 
 end

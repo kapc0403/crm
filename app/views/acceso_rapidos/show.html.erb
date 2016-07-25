@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @acceso_rapido.nombre %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @acceso_rapido.url %>
+</p>
+
+<%= link_to 'Edit', edit_acceso_rapido_path(@acceso_rapido) %> |
+<%= link_to 'Back', acceso_rapidos_path %>

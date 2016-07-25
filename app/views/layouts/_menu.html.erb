@@ -1,76 +1,148 @@
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
 <div class="wrapper">
 
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="/welcomes" class="logo">
+    <a href="<%= welcomes_path %>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Evolusie</b>CRM</span>
+      <span class="logo-lg"><b><%= Welcome.last.nombreEmpresa %></b>CRM</span>
     </a>
 
-     <nav class="navbar navbar-static-top">
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                <span class="sr-only">Toggle navigation</span>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          
+          <% @menu = MenuRapido.where("usuario_id = ?", current_usuario.id) %>
+          <% @menu.each do |as| %>
+            <% @acce1 = AccesoRapido.where("nombre = ?", as.accesor1) %>
+            <% @acce2 = AccesoRapido.where("nombre = ?", as.accesor2) %>
+            <% @acce3 = AccesoRapido.where("nombre = ?", as.accesor3) %>
+            <% @acce4 = AccesoRapido.where("nombre = ?", as.accesor4) %>
+            <% @acce5 = AccesoRapido.where("nombre = ?", as.accesor5) %>
+            <% @acce6 = AccesoRapido.where("nombre = ?", as.acceso6) %>
+            <% @acce7 = AccesoRapido.where("nombre = ?", as.accesor7) %>
+          <li>
+            <% @acce1.each do |ac| %>
+              <a href="<%= ac.url %>">
+                <i class="fa <%= ac.icon %>"></i> <%= ac.nombre %>
+              </a>
+            <% end %>
+          </li>
+          <li>
+            <% @acce2.each do |ac| %>
+              <a href="<%= ac.url %>">
+                <i class="fa <%= ac.icon %>"></i> <%= ac.nombre %>
+              </a>
+            <% end %>
+          </li>
+          <li>
+            <% @acce3.each do |ac| %>
+              <a href="<%= ac.url %>">
+                <i class="fa <%= ac.icon %>"></i> <%= ac.nombre %>
+              </a>
+            <% end %>
+          </li>
+          <li>
+            <% @acce4.each do |ac| %>
+              <a href="<%= ac.url %>">
+                <i class="fa <%= ac.icon %>"></i> <%= ac.nombre %>
+              </a>
+            <% end %>
+          </li>
+          <li>
+            <% @acce5.each do |ac| %>
+              <a href="<%= ac.url %>">
+                <i class="fa <%= ac.icon %>"></i> <%= ac.nombre %>
+              </a>
+            <% end %>
+          </li>
+          <li>
+            <% @acce6.each do |ac| %>
+              <a href="<%= ac.url %>">
+                <i class="fa <%= ac.icon %>"></i> <%= ac.nombre %>
+              </a>
+            <% end %>
+          </li>
+          <li>
+            <% @acce7.each do |ac| %>
+              <a href="<%= ac.url %>">
+                <i class="fa <%= ac.icon %>"></i> <%= ac.nombre %>
+              </a>
+            <% end %>
+          </li>
+          <% end %>
+          
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="<%= current_usuario.foto %>" class="user-image" alt="User Image">
+              <span class="hidden-xs"><%= current_usuario.nombre+" "+current_usuario.apellido %></span>
             </a>
-            <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <%= link_to '<i class="fa fa-building-o"></i>'.html_safe, empresaclientes_path(@user) %>
-                    </li>
-                    <li>
-                        <%= link_to '<i class="fa fa-user"></i>'.html_safe, proveedors_path(@user) %>
-                    </li>
-                    <li>
-                        <%= link_to '<i class="fa fa-calendar"></i>'.html_safe, tareas_path(@user) %>
-                    </li>
-                    <li class="dropdown user user-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                          <span class="hidden-xs fa fa-gear"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="user-header">
-                                <p class="letraN">
-                                    <%= current_usuario.nombre %> <%= current_usuario.apellido %>
-                                    <small><%= current_usuario.email %></small>
-                                    <small><%= current_usuario.rol %></small>
-                                </p>
-                            </li>
-                            <li class="user-body">
-                                
-                            </li>
-                            <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                </div>
-                                <div class="pull-right">
-                                    <%= link_to "Cerrar Sesión", destroy_usuario_session_path, method: :delete, :class=>"fa fa-sign-out" %>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="<%= current_usuario.foto %>" class="img-circle" alt="User Image">
+
+                <p>
+                  <%= current_usuario.nombre+" "+current_usuario.apellido %><br>
+                  <small><%= current_usuario.rol %></small>
+                  <small>Miembro desde <%= current_usuario.created_at %></small>
+                </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <%= link_to "Perfil", edit_usuario_registration_path(current_usuario), :class=>"btn btn-default btn-flat" %>
+                </div>
+                <div class="pull-right">
+                  <%= link_to "Cerrar Sesión", destroy_usuario_session_path, method: :delete, :class=>"btn btn-default btn-flat" %>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
-        <section class="sidebar">
-            <div class="user-panel">
-                <div class="pull-left info">
-                    <p>
-                        <%= current_usuario.nombre %>
-                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                    </p>
-                </div>
-                <div class="pull-left footer">
-                    <p></p>
-                </div>
-            </div>
-            
-            <ul class="sidebar-menu">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="<%= current_usuario.foto %>" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p><%= current_usuario.nombre+" "+current_usuario.apellido %></p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
                 <li class="header"><center>Menu CRM Evolusie</center></li>
                 <li class="treeview">
                     <a href="#">
@@ -83,6 +155,23 @@
                     <ul class="treeview-menu">
                         <li><%= link_to '<i class="fa fa-eye"></i> Ver Clientes'.html_safe, empresaclientes_path(@user) %></li>
                         <li><%= link_to '<i class="fa fa-plus"></i> Nuevo Clientes'.html_safe, new_empresacliente_path(@user) %></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-building-o"></i>
+                        <span>Prospectos</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                          <a href="/empresaclientes/indexprospectos" class="fa fa-eye" role="button">
+                            <span>Ver Prospecto</span>
+                          </a>
+                          <!--<= link_to '<i class="fa fa-eye"></i> Ver Prospectos'.html_safe, indexprospectos_empresacliente_path(@user) %> --></li>
+                        <li><%= link_to '<i class="fa fa-plus"></i> Nuevo Prospecto'.html_safe, new_empresacliente_path(@user) %></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -162,13 +251,48 @@
                         <li><%= link_to '<i class="fa fa-plus"></i> Nuevo Factura'.html_safe, new_factura_path(@user) %></li>
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-bookmark-o"></i>
+                        <span>Ajustes</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><%= link_to '<i class="fa fa-eye"></i> Accesos Directos'.html_safe, acceso_rapidos_path(@user) %></li>
+                        <li><%= link_to '<i class="fa fa-plus"></i> Wizard'.html_safe, welcomes_path(@user) %></li>
+                        <li><%= link_to '<i class="fa fa-plus"></i> Personalización'.html_safe, menu_rapidos_path(@user) %></li>
+                        <li><%= link_to '<i class="fa fa-plus"></i> Dashboard'.html_safe, widgets_path(@user) %></li>
+                    </ul>
+                </li>
             </ul>
-        </section>
-    </aside>
-  <!-- Content Wrapper. Contains page content -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+ <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-   <%=yield%>
+    <section class="content-header">
+      <h1>
+        Dashboard
+        <small>Version 1.0</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <%= yield %>
+      
+      
+      
+    </section>
+    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
@@ -176,7 +300,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2016 <a href="http://evolusie.com">Evolusie</a>.</strong> All rights
+    <strong>Copyright &copy; 2016 <a href=""><%= Welcome.last.nombreEmpresa %></a>.</strong> All rights
     reserved.
   </footer>
 
@@ -373,7 +497,3 @@
   <div class="control-sidebar-bg"></div>
 
 </div>
-<!-- ./wrapper -->
-
-</body>
-</html>

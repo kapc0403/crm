@@ -15,13 +15,23 @@
   
     <br>
     <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-          <div class="text-primary">
+      <div class="col-md-12">
+        <div class="container">
+          <h2>Cliente</h2>
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Cliente</a></li>
+            <li><a data-toggle="tab" href="#menu1">Empresa</a></li>
+          </ul>
+        
+          <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+              <h3></h3>
+              <div class="text-primary">
               <div class="panel panel-primary">
                 <div class="panel-heading">
               <center><font><h1>Datos Cliente Encargado</h1></font></center>
             </div><br></br>
-            <div class="row">
+              <div class="row">
               <div class="col-md-5 col-md-offset-1">
                 <div class="field form-group">
                   <%= f.label :"Nombre" %><br>
@@ -113,13 +123,17 @@
                 </div>
               </div>
               </div>
-              <div class="container-fluid">
-              <div ng-show="user.empresa" class="row">
-                <div class="panel panel-primary">
+              </div>
+              </div>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+              <h3></h3>
+              <div class="text-primary">
+              <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <center><font><h1>Datos Empresa</h1></font></center>
-                </div><br></br>
-                <div class="row">
+              <center><font><h1>Datos Empresa</h1></font></center>
+            </div><br></br>
+              <div class="row">
                   <div class="col-md-5 col-md-offset-1">
                     <div class="field form-group">
                       <%= f.label :"Nit" %><br>
@@ -175,28 +189,22 @@
                     </div>
                   </div>
                 </div>
-            
+                </div>
+                </div>
             </div>
-            
-            <style>
-              input[type=checkbox] {
-              /* All browsers except webkit*/
-              transform: scale(1.3);
-            </style>
-                <!-- Formulario para datos de empresa -->
-            
           </div>
         </div>
-      </div>
-      <div class="row">
+        </div>
+        </div>
+        <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <div class="actions">
             <%= f.submit 'Guardar Cliente', :class=>"btn btn-rouder-primary btn-block fa fa-2x" %>
           </div>
         </div>
       </div>
-    </div>
-</div>
+  </div>
+</div>  
 <% end %>
 
 <script>

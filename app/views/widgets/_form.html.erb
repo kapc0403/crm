@@ -1,0 +1,73 @@
+<%= form_for(@widget) do |f| %>
+  <% if @widget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@widget.errors.count, "error") %> prohibited this widget from being saved:</h2>
+
+      <ul>
+      <% @widget.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :usuario_id %><br>
+    <%= f.text_field :usuario_id %>
+  </div>
+  <div class="field">
+    <%= f.label :w1 %><br>
+    <%= f.text_field :w1 %>
+  </div>
+  <div class="field">
+    <%= f.label :w2 %><br>
+    <%= f.text_field :w2 %>
+  </div>
+  <div class="field">
+    <%= f.label :w3 %><br>
+    <%= f.text_field :w3 %>
+  </div>
+  <div class="field">
+    <%= f.label :w4 %><br>
+    <%= f.text_field :w4 %>
+  </div>
+  <div class="field">
+    <%= f.label :w5 %><br>
+    <%= f.text_field :w5 %>
+  </div>
+  <div class="field">
+    <%= f.label :w6 %><br>
+    <%= f.text_field :w6 %>
+  </div>
+  <div class="field">
+    <%= f.label :w7 %><br>
+    <%= f.text_field :w7 %>
+  </div>
+  <div class="field">
+    <%= f.label :w8 %><br>
+    <%= f.text_field :w8 %>
+  </div>
+  <div class="field">
+    <%= f.label :w9 %><br>
+    <%= f.text_field :w9 %>
+  </div>
+  <div class="field">
+    <%= f.label :w10 %><br>
+    <%= f.text_field :w10 %>
+  </div>
+  <div class="field">
+    <%= f.label :w11 %><br>
+    <%= f.text_field :w11 %>
+  </div>
+  <div class="field">
+    <%= f.label :w12 %><br>
+    <%= f.text_field :w12 %>
+  </div>
+  <div class="field">
+    <%= f.label :colorlayout %><br>
+    <%= f.text_field :colorlayout %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

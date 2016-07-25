@@ -1,38 +1,47 @@
-<font><h1 class="text-primary">Lista de Clientes</h1></font>
-<div class="col-md-10 center-block no-float form-login padding_top">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Persona</th>
-        <th>Apellido</th>
-        <th>Telefono</th>
-        <th>Empresa</th>
-        <th>Telefono</th>
-        <th>Usuario</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-  
-    <tbody>
-      <% @empresaclientes.each do |empresacliente| %>
-        <tr>
-          <td><%= empresacliente.personaNombre %></td>
-          <td><%= empresacliente.personaApellido %></td>
-          <td><%= empresacliente.personaTelefono %></td>
-          <td><%= empresacliente.empresaNombre %></td>
-          <td><%= empresacliente.empresaTelefono %></td>
-          <td><%= empresacliente.usuario %></td>
-          <td><%= link_to '', empresacliente, :class=>"fa fa-eye fa-1x" %></td>
-          <td><%= link_to '', edit_empresacliente_path(empresacliente), :class=>"fa fa-pencil fa-1x" %></td>
-          <td><%= link_to '', empresacliente, :class=>"fa fa-trash-o fa-1x", method: :delete, data: { confirm: '¿Esta Seguro que desea Eliminar?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<center><font><h1 class="text-primary">Lista de Clientes</h1></font></center>
+
+      <table id="products" class="display" data-source="<%= products_url(format: "json") %>">
+        <thead>
+          <tr>
+            <th colspan="6" style="text-align: left;" >
+              <div class="actions">
+                <a><%= link_to 'Nuevo Cliente', new_empresacliente_path, :class=>" fa fa-plus-circle fa-2x btn btn-border-primary btn-rounded btn-lg" %></a>
+              </div>
+            </th>
+            <th colspan="3">
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search fa" aria-hidden="true"></i></div>
+                <input type="text" class="form-control" id="buscar" placeholder="Buscar">
+              </div>
+            </th>
+          </tr>
+          <tr>
+            <th>Persona</th>
+            <th>Apellido</th>
+            <th>Telefono</th>
+            <th>Empresa</th>
+            <th>Telefono</th>
+            <th>Usuario</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <% @empresaclientes.each do |empresacliente| %>
+            <tr>
+              <td><%= empresacliente.personaNombre %></td>
+              <td><%= empresacliente.personaApellido %></td>
+              <td><%= empresacliente.personaTelefono %></td>
+              <td><%= empresacliente.empresaNombre %></td>
+              <td><%= empresacliente.empresaTelefono %></td>
+              <td><%= empresacliente.usuario %></td>
+              <td><%= link_to '', empresacliente, :class=>"fa fa-eye fa-1x" %></td>
+              <td><%= link_to '', edit_empresacliente_path(empresacliente), :class=>"fa fa-pencil fa-1x" %></td>
+              <td><%= link_to '', empresacliente, :class=>"fa fa-trash-o fa-1x", method: :delete, data: { confirm: '¿Esta Seguro que desea Eliminar?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    
 <%= will_paginate @empresaclientes %>
 <br>
-
-<div class="actions">
-  <a><%= link_to 'Nuevo Cliente', new_empresacliente_path, :class=>" fa fa-plus-circle fa-2x btn btn-border-primary btn-rounded btn-lg" %></a>
-</div>

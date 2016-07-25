@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Acceso Rapidos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @acceso_rapidos.each do |acceso_rapido| %>
+      <tr>
+        <td><%= acceso_rapido.nombre %></td>
+        <td><%= acceso_rapido.url %></td>
+        <td><%= link_to 'Show', acceso_rapido %></td>
+        <td><%= link_to 'Edit', edit_acceso_rapido_path(acceso_rapido) %></td>
+        <td><%= link_to 'Destroy', acceso_rapido, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Acceso rapido', new_acceso_rapido_path %>

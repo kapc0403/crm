@@ -34,7 +34,14 @@ gem 'mail'
 gem "watu_table_builder", :require => "table_builder"
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
+gem 'google-api-client', '0.9'
 
+group :assets do
+  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+  gem 'jquery-ui-rails'
+end
+
+gem 'will_paginate'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

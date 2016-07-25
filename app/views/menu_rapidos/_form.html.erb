@@ -1,0 +1,49 @@
+<%= form_for(@menu_rapido) do |f| %>
+  <% if @menu_rapido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@menu_rapido.errors.count, "error") %> prohibited this menu_rapido from being saved:</h2>
+
+      <ul>
+      <% @menu_rapido.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :usuario_id %><br>
+    <%= f.text_field :usuario_id %>
+  </div>
+  <div class="field">
+    <%= f.label :accesor1 %><br>
+    <%= f.text_field :accesor1 %>
+  </div>
+  <div class="field">
+    <%= f.label :accesor2 %><br>
+    <%= f.text_field :accesor2 %>
+  </div>
+  <div class="field">
+    <%= f.label :accesor3 %><br>
+    <%= f.text_field :accesor3 %>
+  </div>
+  <div class="field">
+    <%= f.label :accesor4 %><br>
+    <%= f.text_field :accesor4 %>
+  </div>
+  <div class="field">
+    <%= f.label :accesor5 %><br>
+    <%= f.text_field :accesor5 %>
+  </div>
+  <div class="field">
+    <%= f.label :acceso6 %><br>
+    <%= f.text_field :acceso6 %>
+  </div>
+  <div class="field">
+    <%= f.label :accesor7 %><br>
+    <%= f.text_field :accesor7 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

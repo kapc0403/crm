@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  usuario_id: 
+  accesor1: MyString
+  accesor2: MyString
+  accesor3: MyString
+  accesor4: MyString
+  accesor5: MyString
+  acceso6: MyString
+  accesor7: MyString
+
+two:
+  usuario_id: 
+  accesor1: MyString
+  accesor2: MyString
+  accesor3: MyString
+  accesor4: MyString
+  accesor5: MyString
+  acceso6: MyString
+  accesor7: MyString

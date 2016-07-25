@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  usuario_id: 
+  w1: MyString
+  w2: MyString
+  w3: MyString
+  w4: MyString
+  w5: MyString
+  w6: MyString
+  w7: MyString
+  w8: MyString
+  w9: MyString
+  w10: MyString
+  w11: MyString
+  w12: MyString
+  colorlayout: MyString
+
+two:
+  usuario_id: 
+  w1: MyString
+  w2: MyString
+  w3: MyString
+  w4: MyString
+  w5: MyString
+  w6: MyString
+  w7: MyString
+  w8: MyString
+  w9: MyString
+  w10: MyString
+  w11: MyString
+  w12: MyString
+  colorlayout: MyString
