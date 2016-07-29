@@ -6,6 +6,7 @@ class EmpresaclientesController < ApplicationController
   def index
     @empresaclientes = Empresacliente.paginate(page: params[:page], per_page:15).all
    # @empresaclientes = Empresacliente.where("tipo = ?", "Cliente")
+   @empresacliente = Empresacliente.new
    respond_to do |format|
     format.html
     format.json { render json: ProductsDatatable.new(view_context) }

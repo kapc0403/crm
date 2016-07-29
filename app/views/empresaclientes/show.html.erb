@@ -16,7 +16,7 @@
             </div>
             <div class="panel-body">
               <d1>
-                <dt class="text-info">CC</dt>
+                <dt class="text-info">CC:</dt>
                 <dd><%= @empresacliente.numidentificacion %></dd>
                 <dt class="text-info">Fecha Nacimiento:</dt>
                 <dd><%= @empresacliente.fechaNacimiento %></dd>
@@ -34,9 +34,11 @@
         </div>
         <div id="menu1" class="tab-pane fade">
           <h3></h3>
-          <div class="panel panel-primary">
-            <div class="panel-heading">
+          <div class="panel panel-default">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
               <h1>Empresa: <%= @empresacliente.empresaNombre %> </h1>
+              </div>
             </div>
             <div class="panel-body">
               <d1>
@@ -52,10 +54,6 @@
                 <dd><% if @empresacliente.paginaWeb? %><%= @empresacliente.paginaWeb %><%else%><b>No Registra</b><%end%></dd>
                 <dt class="text-info">Foto:</dt>
                 <dd><%= @empresacliente.foto %></dd>
-                <dt class="text-info">Fecha Inicio de Contrato:</dt>
-                <dd><%= @empresacliente.fechaInicio %></dd>
-                <dt class="text-info">Fecha Fin de Contrato:</dt>
-                <dd><%= @empresacliente.fechaFin %></dd>
                 <dt class="text-info">Usuario:</dt>
                 <dd><%= @empresacliente.usuario.nombre %> <%= @empresacliente.usuario.apellido %></dd>
               </d1>
@@ -66,8 +64,10 @@
     </div>
     
     <div class="actions">
-      <a><%= link_to 'Editar', edit_empresacliente_path(@empresacliente), :class=>"btn btn-primary fa fa-pencil-square-o fa-2x" %></a>
-      <a><%= link_to 'Volver', :back, :class=>" fa fa-arrow-circle-left fa-2x btn btn-primary" %></a>
+      <h3>
+      <a><%= link_to ' Editar', edit_empresacliente_path(@empresacliente), :class=>"btn btn-primary fa fa-pencil-square-o" %></a>
+      <a><%= link_to ' Volver', :back, :class=>" fa fa-arrow-circle-left btn btn-primary" %></a>
+      </h3>
       <% if @empresacliente.tipo === "Prospecto" %>
         <a><%= link_to "Convertir a Cliente", "", :href=> "/changetypecliente/" + @empresacliente.id.to_s ,:class =>"btn btn-primary fa fa-2x"%></a>
       <%end%>

@@ -5,6 +5,7 @@ class ServiciosController < ApplicationController
   # GET /servicios.json
   def index
     @servicios = Servicio.paginate(page: params[:page], per_page:15).all
+    @servicio = Servicio.new
   end
 
   # GET /servicios/1

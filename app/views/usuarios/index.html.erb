@@ -1,31 +1,68 @@
-<font face="comic sans ms"><h1 class="text-info">Usuarios</h1></font>
-
-<div class="col-md-10 center-block no-float form-login padding_top">
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Rol</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.nombre %></td>
-        <td><%= user.rol %></td>
-        <td><%= link_to '', user, :class=>"fa fa-eye fa-1x" %></td>
-        <td><%= link_to '', edit_usuario_path(user), :class=>"fa fa-pencil fa-1x" %></td>
-        <td><%= link_to '', user, :class=>"fa fa-trash-o fa-1x", method: :delete, data: { confirm: '¿Esta Seguro que desea Eliminar?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+<center><font face="comic sans ms"><h1>Usuarios</h1></font></center>
+</div>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 ">
+    <div class="center-block no-float form-login padding_top">
+      <table class="table table-bordered" id="datatable">
+        <thead>
+          <tr>
+            <th colspan="2" style="text-align: left;" >
+              <div class="actions">
+                <h4>
+                  <button type="button-primary" class="fa fa-plus-circle btn btn-primary btn-rounded" data-toggle="modal" data-target="#modal-lg"> Nuevo Usuario</button>
+                  <div class="modal fade" id="modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                          <%= render 'form' %>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </h4>
+                
+              </div>
+            </th>
+            <th colspan="3">
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search fa" aria-hidden="true"></i></div>
+                <input id="filtrar" type="text" class="form-control" placeholder="Buscar">
+              </div>
+            </th>
+          </tr>
+        </thead>
+        
+        <thead>
+          <tr class="info">
+            <th>Nombre</th>
+            <th>Rol</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+      
+        <tbody class="buscar">
+          <% @users.each do |user| %>
+            <tr class="active">
+              <td><%= user.nombre %></td>
+              <td><%= user.rol %></td>
+              <td><%= link_to '', user, :class=>"fa fa-eye fa-1x" %></td>
+              <td><%= link_to '', edit_usuario_path(user), :class=>"fa fa-pencil fa-1x" %></td>
+              <td><%= link_to '', user, :class=>"fa fa-trash-o fa-1x", method: :delete, data: { confirm: '¿Esta Seguro que desea Eliminar?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 <%= will_paginate @users %>
 <br>
-
-<div class="actions">
-  <a><%= link_to 'Nuevo Usuario', '/usuarios/sign_up', :class=>" fa fa-plus-circle fa-2x btn btn-border-info btn-rounded btn-lg" %></a>
 </div>

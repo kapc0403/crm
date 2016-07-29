@@ -14,6 +14,23 @@
   </div>
 </div>
 
+
+<h2>Accesos Directos</h2>
+ 
+<% if @user.accesosdirecto.any? %>
+  <ul>
+    <% @user.accesosdirecto.each do |subsidiary| %>
+      <li>Acceso Directo <%= subsidiary.id%>: <b><%= subsidiary.nombre %></b></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No posee Accesos directos</p>
+<% end %>
+
+
+
 <div class="actions">
-  <a><%= link_to 'Volver', :back, :class=>" fa fa-arrow-circle-left fa-2x btn btn-primary" %></a>
+  <h3>
+    <a><%= link_to 'Volver', :back, :class=>" fa fa-arrow-circle-left btn btn-primary" %></a>
+  </h3>
 </div>

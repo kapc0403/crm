@@ -1,73 +1,132 @@
-<font face="comic sans ms"><h1 class="text-info">Crear Nuevo Usuario</h1></font>
-<div>
-    <div class="col-md-10 center-block no-float form-login padding_top">
 
+<font face="comic sans ms"><h1>Crear Nuevo Usuario</h1></font>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<br><br/>
+<div class="panel panel-primary">
+  <br/>
+<div class="tab-content">
+    <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+    <div class="field form-group">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
   </div>
-  
-  <div class="field">
-    <%= f.label :nombre %><br />
-    <%= f.text_field :nombre %>
   </div>
-  
-  <div class="field">
+  <div class="col-md-3 col-md-offset-1">
+  <div class="field form-group">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre, placeholder: "Nombre", :class=>"form-control" %>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+  <div class="field form-group">
     <%= f.label :apellido %><br>
-    <%= f.text_field :apellido %>
+    <%= f.text_field :apellido, placeholder: "apellido", :class=>"form-control" %>
   </div>
-  
-  <div class="field">
+  </div>
+  <div class="col-md-3 col-md-offset-1">
+  <div class="field form-group">
     <%= f.label :telefono %><br>
-    <%= f.text_field :telefono %>
+    <%= f.text_field :telefono, placeholder: "telefono", :class=>"form-control" %>
   </div>
-  
-  <div class="field">
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+  <div class="field form-group">
     <%= f.label :movil %><br>
-    <%= f.text_field :movil %>
+    <%= f.text_field :movil, placeholder: "movil", :class=>"form-control" %>
   </div>
-  
-  <div class="field">
+  </div>
+  <div class="col-md-5 col-md-offset-1">
+  <div class="field form-group">
     <%= f.label :estado %><br>
     <%= f.select :estado, ['Activo', 'Inactivo'], :include_blank => "Por favor seleccione..." %>
   </div>
-  
-  <div class="field">
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-5 col-md-offset-1">
+  <div class="field form-group">
     <%= f.label :rol %><br>
     <%= f.select :rol, ['Administrador', 'Marketing', 'Ventas', 'Soporte','Invitado'], :include_blank => "Por favor seleccione..." %>
   </div>
-  
-  <div class="field">
+  </div>
+  <div class="col-md-5 col-md-offset-1">
+  <div class="field form-group">
     <%= f.label :foto %><br />
     <%= f.file_field :foto %>
   </div>
-  
-  <div class="field">
-    <%= f.label :usuario %><br />
-    <%= f.text_field :nombreUsuario %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> Caracteres como Mínimo)</em>
-    <% end %><br />
+  </div>
+  <div class="row">
+  <div class="col-md-5 col-md-offset-1">
+  <div class="field form-group">
+    <%= f.label :usuario %><br /><br>
+    <%= f.text_field :nombreUsuario, placeholder: "usuario", :class=>"form-control" %>
+  </div>
+  </div>
+  <div class="col-md-5 col-md-offset-1">
+  <div class="field form-group">
+    <%= f.label :password %> <i></i><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
-
-  <div class="field">
+  </div>
+  </div>
+  <div class="row">
+<div class="col-md-5 col-md-offset-1">
+  <div class="field form-group">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-  <br>
+  </div>
+  </div>
+  
+<h2 align="center">Menu Rapido</h2>
+ 
+  <%= f.fields_for :menu_rapido do | subsidiary | %>
+    <div class="bank_subsidiaries_fields">
+      <div class="field">
+        <%= f.label :usuario_id %><br>
+        <%= subsidiary.text_field :usuario_id %>
+      </div>
+      <div class="field">
+        <%= f.label :accesor1 %><br>
+        <%= subsidiary.text_field :accesor1 %>
+      </div>
+      <div class="field">
+        <%= f.label :accesor2 %><br>
+        <%= subsidiary.text_field :accesor2 %>
+      </div>
+    
+    <div class="field">
+        <%= f.label :accesor3 %><br>
+        <%= subsidiary.text_field :accesor3 %>
+      </div>
+      <div class="field">
+        <%= f.label :accesor4 %><br>
+        <%= subsidiary.text_field :accesor4 %>
+      </div>
+      <div class="field">
+        <%= f.label :accesor5 %><br>
+        <%= subsidiary.text_field :accesor5 %>
+      </div>
+      <div class="field">
+        <%= f.label :acceso6 %><br>
+        <%= subsidiary.text_field :acceso6 %>
+      </div>
+      <div class="field">
+        <%= f.label :accesor7 %><br>
+        <%= subsidiary.text_field :accesor7 %>
+      </div>
+      </div>
+  <% end %>
+  </div>
+
   <div class="actions">
     <a><%= f.submit "  Crear", :class=>"btn btn-border-info btn-rounded btn-lg btn-block"%></a>
   </div>
   <% end %>
-
-</div>
-</div>

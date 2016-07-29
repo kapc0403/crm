@@ -11,15 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725140511) do
+ActiveRecord::Schema.define(version: 20160728190437) do
 
-  create_table "acceso_rapidos", force: :cascade do |t|
+  create_table "accesosdirectos", force: :cascade do |t|
+    t.integer  "usuario_id"
+    t.string   "icon"
     t.string   "nombre"
     t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "icon"
   end
+
+  add_index "accesosdirectos", ["usuario_id"], name: "index_accesosdirectos_on_usuario_id"
 
   create_table "ciudads", force: :cascade do |t|
     t.string   "nombreCiudad"
@@ -71,8 +74,6 @@ ActiveRecord::Schema.define(version: 20160725140511) do
     t.integer  "foto_file_size"
     t.datetime "foto_updated_at"
     t.string   "tipo"
-    t.date     "fechaInicio"
-    t.date     "fechaFin"
     t.integer  "usuario_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
@@ -104,21 +105,6 @@ ActiveRecord::Schema.define(version: 20160725140511) do
   add_index "facturas", ["personacliente_id"], name: "index_facturas_on_personacliente_id"
   add_index "facturas", ["usuario_id"], name: "index_facturas_on_usuario_id"
 
-  create_table "menu_rapidos", force: :cascade do |t|
-    t.integer  "usuario_id"
-    t.string   "accesor1"
-    t.string   "accesor2"
-    t.string   "accesor3"
-    t.string   "accesor4"
-    t.string   "accesor5"
-    t.string   "acceso6"
-    t.string   "accesor7"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "menu_rapidos", ["usuario_id"], name: "index_menu_rapidos_on_usuario_id"
-
   create_table "productos", force: :cascade do |t|
     t.string   "nombre"
     t.integer  "codigo"
@@ -133,6 +119,22 @@ ActiveRecord::Schema.define(version: 20160725140511) do
   end
 
   add_index "productos", ["proveedors_id"], name: "index_productos_on_proveedors_id"
+
+  create_table "productos_por_clientes", force: :cascade do |t|
+    t.integer  "usuario_id"
+    t.string   "nombre"
+    t.string   "marca"
+    t.string   "referencia"
+    t.string   "nroProductos"
+    t.string   "fechaAdquisicion"
+    t.string   "fechaCaducidad"
+    t.text     "datosTecnicos"
+    t.string   "serial"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "productos_por_clientes", ["usuario_id"], name: "index_productos_por_clientes_on_usuario_id"
 
   create_table "proveedors", force: :cascade do |t|
     t.string   "tipoCedula"
@@ -188,22 +190,6 @@ ActiveRecord::Schema.define(version: 20160725140511) do
 
   add_index "servicios", ["usuario_id"], name: "index_servicios_on_usuario_id"
 
-  create_table "tareas", force: :cascade do |t|
-    t.string   "asunto"
-    t.string   "estado"
-    t.string   "prioridad"
-    t.string   "descripcion"
-    t.date     "fechaInicio"
-    t.date     "fechaFin"
-    t.integer  "usuarios_id"
-    t.integer  "empresaclientes_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-  end
-
-  add_index "tareas", ["empresaclientes_id"], name: "index_tareas_on_empresaclientes_id"
-  add_index "tareas", ["usuarios_id"], name: "index_tareas_on_usuarios_id"
-
   create_table "tiposeguimientos", force: :cascade do |t|
     t.string   "nombre"
     t.boolean  "activo"
@@ -258,26 +244,5 @@ ActiveRecord::Schema.define(version: 20160725140511) do
     t.string   "prefijoconsecutivo"
     t.integer  "sufijoconsecutivo"
   end
-
-  create_table "widgets", force: :cascade do |t|
-    t.integer  "usuario_id"
-    t.string   "w1"
-    t.string   "w2"
-    t.string   "w3"
-    t.string   "w4"
-    t.string   "w5"
-    t.string   "w6"
-    t.string   "w7"
-    t.string   "w8"
-    t.string   "w9"
-    t.string   "w10"
-    t.string   "w11"
-    t.string   "w12"
-    t.string   "colorlayout"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "widgets", ["usuario_id"], name: "index_widgets_on_usuario_id"
 
 end

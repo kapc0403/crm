@@ -5,18 +5,22 @@ class FacturasController < ApplicationController
   # GET /facturas.json
   def index
     @facturas = Factura.paginate(page: params[:page], per_page:15).where("estadofactura_id = ?", "4")
+    @factura = Factura.new
   end
   
   def indexpropuestas
     @facturas = Factura.paginate(page: params[:page], per_page:15).where("estadofactura_id = ?", "1")
+    @factura = Factura.new
   end
   
   def indexordenes
     @facturas = Factura.paginate(page: params[:page], per_page:15).where("estadofactura_id = ?", "3")
+    @factura = Factura.new
   end
   
   def indexpedidos
     @facturas = Factura.paginate(page: params[:page], per_page:15).where("estadofactura_id = ?", "2")
+    @factura = Factura.new
   end
   
   def changestatepropuesta

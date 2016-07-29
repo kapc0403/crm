@@ -3,6 +3,7 @@ class UsuariosController < ApplicationController
 
   def index
       @users = Usuario.paginate(page: params[:page], per_page:15).all
+      @user = Usuario.new
   end
 
   def show
@@ -13,6 +14,9 @@ class UsuariosController < ApplicationController
     @user = Usuario.find(params[:id])
   end
   
+  def new
+    @user = Usuario.new
+  end
   def update
     respond_to do |format|
       @user = Usuario.find(params[:id])
@@ -40,7 +44,9 @@ class UsuariosController < ApplicationController
   
   def user_params
       params.require(:usuario).permit(:email, :nombreUsuario, :password, :password_confirmation, :nombre, 
-                    :apellido, :rol, :telefono, :movil, :estado, :foto, :current_password)
+                    :apellido, :rol, :telefono, :movil, :estado, :foto, :current_password, 
+                    menu_rapido_attributes: [:usuario_id, :accesor1, :accesor2, :accesor3, :accesor4,
+                    :accesor5, :acceso6, :accesor7])
   end
   
 

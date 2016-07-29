@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Productos Por Clientes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Nombre</th>
+      <th>Marca</th>
+      <th>Referencia</th>
+      <th>Nroproductos</th>
+      <th>Fechaadquisicion</th>
+      <th>Fechacaducidad</th>
+      <th>Datostecnicos</th>
+      <th>Serial</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @productos_por_clientes.each do |productos_por_cliente| %>
+      <tr>
+        <td><%= productos_por_cliente.usuario %></td>
+        <td><%= productos_por_cliente.nombre %></td>
+        <td><%= productos_por_cliente.marca %></td>
+        <td><%= productos_por_cliente.referencia %></td>
+        <td><%= productos_por_cliente.nroProductos %></td>
+        <td><%= productos_por_cliente.fechaAdquisicion %></td>
+        <td><%= productos_por_cliente.fechaCaducidad %></td>
+        <td><%= productos_por_cliente.datosTecnicos %></td>
+        <td><%= productos_por_cliente.serial %></td>
+        <td><%= link_to 'Show', productos_por_cliente %></td>
+        <td><%= link_to 'Edit', edit_productos_por_cliente_path(productos_por_cliente) %></td>
+        <td><%= link_to 'Destroy', productos_por_cliente, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Productos por cliente', new_productos_por_cliente_path %>

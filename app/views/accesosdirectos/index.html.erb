@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Accesosdirectos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Icon</th>
+      <th>Nombre</th>
+      <th>Url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accesosdirectos.each do |accesosdirecto| %>
+      <tr>
+        <td><%= accesosdirecto.usuario %></td>
+        <td><%= accesosdirecto.icon %></td>
+        <td><%= accesosdirecto.nombre %></td>
+        <td><%= accesosdirecto.url %></td>
+        <td><%= link_to 'Show', accesosdirecto %></td>
+        <td><%= link_to 'Edit', edit_accesosdirecto_path(accesosdirecto) %></td>
+        <td><%= link_to 'Destroy', accesosdirecto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Accesosdirecto', new_accesosdirecto_path %>

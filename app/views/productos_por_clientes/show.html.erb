@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @productos_por_cliente.usuario %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @productos_por_cliente.nombre %>
+</p>
+
+<p>
+  <strong>Marca:</strong>
+  <%= @productos_por_cliente.marca %>
+</p>
+
+<p>
+  <strong>Referencia:</strong>
+  <%= @productos_por_cliente.referencia %>
+</p>
+
+<p>
+  <strong>Nroproductos:</strong>
+  <%= @productos_por_cliente.nroProductos %>
+</p>
+
+<p>
+  <strong>Fechaadquisicion:</strong>
+  <%= @productos_por_cliente.fechaAdquisicion %>
+</p>
+
+<p>
+  <strong>Fechacaducidad:</strong>
+  <%= @productos_por_cliente.fechaCaducidad %>
+</p>
+
+<p>
+  <strong>Datostecnicos:</strong>
+  <%= @productos_por_cliente.datosTecnicos %>
+</p>
+
+<p>
+  <strong>Serial:</strong>
+  <%= @productos_por_cliente.serial %>
+</p>
+
+<%= link_to 'Edit', edit_productos_por_cliente_path(@productos_por_cliente) %> |
+<%= link_to 'Back', productos_por_clientes_path %>

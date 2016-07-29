@@ -5,6 +5,7 @@ class ProveedorsController < ApplicationController
   # GET /proveedors.json
   def index
     @proveedors = Proveedor.paginate(page: params[:page], per_page:15).all
+    @proveedor = Proveedor.new
   end
 
   # GET /proveedors/1

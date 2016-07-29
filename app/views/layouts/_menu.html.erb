@@ -20,67 +20,14 @@
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          
-          <% @menu = MenuRapido.where("usuario_id = ?", current_usuario.id) %>
-          <% @menu.each do |as| %>
-            <% @acce1 = AccesoRapido.where("nombre = ?", as.accesor1) %>
-            <% @acce2 = AccesoRapido.where("nombre = ?", as.accesor2) %>
-            <% @acce3 = AccesoRapido.where("nombre = ?", as.accesor3) %>
-            <% @acce4 = AccesoRapido.where("nombre = ?", as.accesor4) %>
-            <% @acce5 = AccesoRapido.where("nombre = ?", as.accesor5) %>
-            <% @acce6 = AccesoRapido.where("nombre = ?", as.acceso6) %>
-            <% @acce7 = AccesoRapido.where("nombre = ?", as.accesor7) %>
-          <li>
-            <% @acce1.each do |ac| %>
-              <a href="<%= ac.url %>">
-                <i class="fa <%= ac.icon %>"></i> <%= ac.nombre %>
-              </a>
-            <% end %>
-          </li>
-          <li>
-            <% @acce2.each do |ac| %>
-              <a href="<%= ac.url %>">
-                <i class="fa <%= ac.icon %>"></i> <%= ac.nombre %>
-              </a>
-            <% end %>
-          </li>
-          <li>
-            <% @acce3.each do |ac| %>
-              <a href="<%= ac.url %>">
-                <i class="fa <%= ac.icon %>"></i> <%= ac.nombre %>
-              </a>
-            <% end %>
-          </li>
-          <li>
-            <% @acce4.each do |ac| %>
-              <a href="<%= ac.url %>">
-                <i class="fa <%= ac.icon %>"></i> <%= ac.nombre %>
-              </a>
-            <% end %>
-          </li>
-          <li>
-            <% @acce5.each do |ac| %>
-              <a href="<%= ac.url %>">
-                <i class="fa <%= ac.icon %>"></i> <%= ac.nombre %>
-              </a>
-            <% end %>
-          </li>
-          <li>
-            <% @acce6.each do |ac| %>
-              <a href="<%= ac.url %>">
-                <i class="fa <%= ac.icon %>"></i> <%= ac.nombre %>
-              </a>
-            <% end %>
-          </li>
-          <li>
-            <% @acce7.each do |ac| %>
-              <a href="<%= ac.url %>">
-                <i class="fa <%= ac.icon %>"></i> <%= ac.nombre %>
-              </a>
-            <% end %>
-          </li>
-          <% end %>
-          
+          <!-- Menu superior personalizado personalizado según el usuario desee -->
+          <% @accesos = Accesosdirecto.where("usuario_id = ?", current_usuario) %>
+          <% @accesos.each do |acc| %>
+            <li>
+              <a href="<%= acc.url %>"><%= acc.nombre %></a>
+            </li>
+          <%end%>
+          <!-- -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<%= current_usuario.foto %>" class="user-image" alt="User Image">
@@ -159,6 +106,48 @@
                 </li>
                 <li class="treeview">
                     <a href="#">
+                        <i class="fa fa-comments-o"></i>
+                        <span>Propuestas</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                        <li><%= link_to '<i class="fa fa-eye"></i> Ver Propuesta'.html_safe, propuestas_path(@user) %></li>
+                        <li><%= link_to '<i class="fa fa-plus"></i> Nuevo Propuesta'.html_safe, new_factura_path(@user) %></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-automobile"></i>
+                        <span>Pedidos</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                          <li><%= link_to '<i class="fa fa-eye"></i> Ver Pedido'.html_safe, pedidos_path(@user) %></li>
+                        <li><%= link_to '<i class="fa fa-plus"></i> Nuevo Pedido'.html_safe, new_factura_path(@user) %></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa fa-child"></i>
+                        <span>Ordenes</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                          <li><%= link_to '<i class="fa fa-eye"></i> Ver Orden'.html_safe, ordenes_path(@user) %></li>
+                        <li><%= link_to '<i class="fa fa-plus"></i> Nuevo Orden'.html_safe, new_factura_path(@user) %></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
                         <i class="fa fa-building-o"></i>
                         <span>Prospectos</span>
                         <span class="pull-right-container">
@@ -167,10 +156,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                          <a href="/empresaclientes/indexprospectos" class="fa fa-eye" role="button">
-                            <span>Ver Prospecto</span>
-                          </a>
-                          <!--<= link_to '<i class="fa fa-eye"></i> Ver Prospectos'.html_safe, indexprospectos_empresacliente_path(@user) %> --></li>
+                          <li><%= link_to '<i class="fa fa-eye"></i> Ver Prospecto'.html_safe,prospectosempresa_path(@user) %></li>
                         <li><%= link_to '<i class="fa fa-plus"></i> Nuevo Prospecto'.html_safe, new_empresacliente_path(@user) %></li>
                     </ul>
                 </li>
@@ -234,8 +220,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><%= link_to '<i class="fa fa-eye"></i> Ver Tareas'.html_safe, tareas_path(@user) %></li>
-                        <li><%= link_to '<i class="fa fa-plus"></i> Nuevo Tarea'.html_safe, new_tarea_path(@user) %></li>
+                        <li><%= link_to '<i class="fa fa-eye"></i> Ver Tareas'.html_safe, nil %></li>
+                        <li><%= link_to '<i class="fa fa-plus"></i> Nuevo Tarea'.html_safe, nil %></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -260,10 +246,10 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><%= link_to '<i class="fa fa-eye"></i> Accesos Directos'.html_safe, acceso_rapidos_path(@user) %></li>
+                        <li><%= link_to '<i class="fa fa-eye"></i> Accesos Directos'.html_safe, nil %></li>
                         <li><%= link_to '<i class="fa fa-plus"></i> Wizard'.html_safe, welcomes_path(@user) %></li>
-                        <li><%= link_to '<i class="fa fa-plus"></i> Personalización'.html_safe, menu_rapidos_path(@user) %></li>
-                        <li><%= link_to '<i class="fa fa-plus"></i> Dashboard'.html_safe, widgets_path(@user) %></li>
+                        <li><%= link_to '<i class="fa fa-plus"></i> Personalización'.html_safe, nil %></li>
+                        <li><%= link_to '<i class="fa fa-plus"></i> Dashboard'.html_safe, nil %></li>
                     </ul>
                 </li>
             </ul>
@@ -275,14 +261,12 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Dashboard
-        <small>Version 1.0</small>
-      </h1>
-      <ol class="breadcrumb">
+      <h4>
+         <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
       </ol>
+      </h4>
     </section>
 
     <!-- Main content -->
@@ -298,10 +282,9 @@
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.0
+      <b>Kdrex</b>
     </div>
-    <strong>Copyright &copy; 2016 <a href=""><%= Welcome.last.nombreEmpresa %></a>.</strong> All rights
-    reserved.
+    <strong>Evolusie &copy;
   </footer>
 
   <!-- Control Sidebar -->

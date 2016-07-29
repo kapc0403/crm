@@ -1,0 +1,53 @@
+<%= form_for(@productos_por_cliente) do |f| %>
+  <% if @productos_por_cliente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@productos_por_cliente.errors.count, "error") %> prohibited this productos_por_cliente from being saved:</h2>
+
+      <ul>
+      <% @productos_por_cliente.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :usuario_id %><br>
+    <%= f.text_field :usuario_id %>
+  </div>
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :marca %><br>
+    <%= f.text_field :marca %>
+  </div>
+  <div class="field">
+    <%= f.label :referencia %><br>
+    <%= f.text_field :referencia %>
+  </div>
+  <div class="field">
+    <%= f.label :nroProductos %><br>
+    <%= f.text_field :nroProductos %>
+  </div>
+  <div class="field">
+    <%= f.label :fechaAdquisicion %><br>
+    <%= f.text_field :fechaAdquisicion %>
+  </div>
+  <div class="field">
+    <%= f.label :fechaCaducidad %><br>
+    <%= f.text_field :fechaCaducidad %>
+  </div>
+  <div class="field">
+    <%= f.label :datosTecnicos %><br>
+    <%= f.text_area :datosTecnicos %>
+  </div>
+  <div class="field">
+    <%= f.label :serial %><br>
+    <%= f.text_field :serial %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

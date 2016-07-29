@@ -1,5 +1,3 @@
-<div>
-    <div class="col-md-6 center-block no-float form-login padding_top">
       <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -12,78 +10,115 @@
       </ul>
     </div>
   <% end %>
-
-    <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+  <div class="panel panel-primary">
+                <div class="panel-heading">
+              <center><font><h1>Nuevo usuario</h1></font></center>
+            </div><br></br>
+  <div class="tab-content">
+    <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+    <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></div>
+    <%= f.text_field :email, placeholder: "E-mail: Ejemplo@hotmail.com", :class=>"form-control" %>
   </div>
-  
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
   </div>
-  
-  <div class="field">
-    <%= f.label :apellido %><br>
-    <%= f.text_field :apellido %>
+  <div class="col-md-5 col-md-offset-1">
+  <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
+    <%= f.text_field :nombre, placeholder: "Nombre: Mario", :class=>"form-control" %>
   </div>
-  
-  <div class="field">
-    <%= f.label :telefono %><br>
-    <%= f.text_field :telefono %>
   </div>
-  
-  <div class="field">
-    <%= f.label :movil %><br>
-    <%= f.text_field :movil %>
   </div>
-  
-  <div class="field">
-    <%= f.label :estado %><br>
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+  <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
+    <%= f.text_field :apellido, placeholder: "Apellido: Mora", :class=>"form-control" %>
+  </div>
+  </div>
+  <div class="col-md-5 col-md-offset-1">
+  <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+    <%= f.text_field :telefono, placeholder: "Telefono: 4424568", :class=>"form-control" %>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+  <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-mobile-phone" aria-hidden="true"></i></div>
+    <%= f.text_field :movil, placeholder: "Telefono movil: 3145897564", :class=>"form-control" %>
+  </div>
+  </div>
+  <div class="col-md-5 col-md-offset-1">
+  <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-archive" aria-hidden="true"></i></div>
     <%= f.select :estado, ['Activo', 'Inactivo'], :include_blank => "Por favor seleccione..." %>
   </div>
-  
-  <div class="field">
-    <%= f.label :rol %><br>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-5 col-md-offset-1">
+  <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-male" aria-hidden="true"></i></div>
     <%= f.select :rol, ['Administrador', 'Marketing', 'Ventas', 'Soporte','Invitado'], :include_blank => "Por favor seleccione..." %>
   </div>
-  
-  <div class="field">
-    <%= f.label :foto %><br />
+  </div>
+  <div class="col-md-5 col-md-offset-1">
+  <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-camera" aria-hidden="true"></i></div>
     <%= f.file_field :foto %>
   </div>
-  
-  <div class="field">
-    <%= f.label :usuario %><br />
-    <%= f.text_field :nombreUsuario %>
   </div>
-  
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  </div>
+  <div class="row">
+  <div class="col-md-5 col-md-offset-1">
+  <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
+    <%= f.text_field :nombreUsuario, placeholder: "usuario", :class=>"form-control" %>
+  </div>
+  </div>
+  <div class="col-md-5 col-md-offset-1">
+  <div class="form-group input-group">
+  			    <%= f.label :"Password" %><br>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
+  </div>
+  </div>
+  <div class="row">
+<div class="col-md-5 col-md-offset-1">
+  <div class="form-group input-group">
+  			    	 <%= f.label :"Confirmar Password" %><br>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
-
+  </div>
+  </div>
+  
+  <h2 align="center">Accesos Directos</h2>
+ 
+  <div class="row">
+<div class="col-md-5 col-md-offset-1">
+  <%= f.fields_for :accesosdirecto do |accd| %>
+    <div class="bank_subsidiaries_fields">
+      <div class="fields">
+        <%= accd.label :"Acceso Rapido" %><br>
+        <%= accd.text_field :nombre %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  </div>
+  </div>
   <div class="actions">
     <center>
-      <a><%= link_to '.', :back, :class=>" fa fa-arrow-circle-o-left fa-2x btn btn-border-info btn-rounded btn-lg" %></a>
-      <a><%= f.submit "Ingresar Datos", :class=>"btn btn-border-info btn-rounded btn-lg" %></a>
+      <a><%= f.submit "Ingresar Datos", :class=>"btn btn-border-info btn-primary btn-lg" %></a>
     </center>
+    <br><br/>
   </div>
 <% end %>
 </div>
-</div>
+
   
 
 <!--%= f.collection_select(:office_id, Office.all, :id, :nombre_nit_sucursal, :include_blank => "Por favor seleccione...") %>
 -->
-<script>
-  $(document).ready(function () {
-            $('select').material_select();
-        });
-</script>

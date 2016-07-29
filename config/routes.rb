@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   
-  resources :codigoicons
-  resources :menu_rapidos
-  resources :acceso_rapidos
-  resources :widgets
-  resources :tareas
-  resources :seguimientos
+  resources :emials
+  resources :visita
+  resources :llamadas
+  resources :visita
+  resources :emails
+  resources :llamadas
+  resources :productos_por_clientes
+  resources :accesosdirectos
   resources :seguimientos
   resources :tiposeguimientos
   resources :estadofacturas

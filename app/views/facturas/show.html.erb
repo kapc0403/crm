@@ -65,33 +65,31 @@
 
 
 
-
-<%= link_to 'Editar', edit_factura_path(@factura), :class=>"btn btn-primary  fa fa-2x" %>
-<%= link_to 'Volver', :back, :class=>"btn btn-primary fa fa-2x" %>
+<h3>
+  <%= link_to 'Editar', edit_factura_path(@factura), :class=>"btn btn-primary  fa" %>
+<%= link_to 'Volver', :back, :class=>"btn btn-primary fa" %>
 
   <% if @factura.estadofactura_id == 1 %>
-    <a><%= link_to "Convertir a Pedido", "", :href=> "/changestatepedido/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
-    <a><%= link_to "Convertir a Orden", "", :href=> "/changestateorden/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
-    <a><%= link_to "Convertir a Factura", "", :href=> "/changestatefactura/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+    <a><%= link_to "Convertir a Pedido", "", :href=> "/changestatepedido/" + @factura.id.to_s ,:class =>"btn btn-primary  fa"%></a>
+    <a><%= link_to "Convertir a Orden", "", :href=> "/changestateorden/" + @factura.id.to_s ,:class =>"btn btn-primary  fa"%></a>
+    <a><%= link_to "Convertir a Factura", "", :href=> "/changestatefactura/" + @factura.id.to_s ,:class =>"btn btn-primary  fa"%></a>
   <%end%>
   <% if @factura.estadofactura_id == 2 %>
-    <a><%= link_to "Convertir a Propuesta", "", :href=> "/changestatepropuesta/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
-    <a><%= link_to "Convertir a Orden", "", :href=> "/changestateorden/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
-    <a><%= link_to "Convertir a Factura", "", :href=> "/changestatefactura/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+    <a><%= link_to "Convertir a Propuesta", "", :href=> "/changestatepropuesta/" + @factura.id.to_s ,:class =>"btn btn-primary  fa"%></a>
+    <a><%= link_to "Convertir a Orden", "", :href=> "/changestateorden/" + @factura.id.to_s ,:class =>"btn btn-primary  fa"%></a>
+    <a><%= link_to "Convertir a Factura", "", :href=> "/changestatefactura/" + @factura.id.to_s ,:class =>"btn btn-primary  fa"%></a>
   <%end%>
   <% if @factura.estadofactura_id == 3 %>
-    <a><%= link_to "Convertir a Propuesta", "", :href=> "/changestatepropuesta/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
-    <a><%= link_to "Convertir a Pedido", "", :href=> "/changestatepedido/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
-    <a><%= link_to "Convertir a Factura", "", :href=> "/changestatefactura/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+    <a><%= link_to "Convertir a Propuesta", "", :href=> "/changestatepropuesta/" + @factura.id.to_s ,:class =>"btn btn-primary  fa"%></a>
+    <a><%= link_to "Convertir a Pedido", "", :href=> "/changestatepedido/" + @factura.id.to_s ,:class =>"btn btn-primary  fa"%></a>
+    <a><%= link_to "Convertir a Factura", "", :href=> "/changestatefactura/" + @factura.id.to_s ,:class =>"btn btn-primary  fa"%></a>
   <%end%>
   <% if @factura.estadofactura_id == 4 %>
-    <a><%= link_to "Convertir a Propuesta", "", :href=> "/changestatepropuesta/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
-    <a><%= link_to "Convertir a Pedido", "", :href=> "/changestatepedido/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
-    <a><%= link_to "Convertir a Orden", "", :href=> "/changestateorden/" + @factura.id.to_s ,:class =>"btn btn-primary  fa fa-2x"%></a>
+    <a><%= link_to "Convertir a Propuesta", "", :href=> "/changestatepropuesta/" + @factura.id.to_s ,:class =>"btn btn-primary  fa"%></a>
+    <a><%= link_to "Convertir a Pedido", "", :href=> "/changestatepedido/" + @factura.id.to_s ,:class =>"btn btn-primary  fa"%></a>
+    <a><%= link_to "Convertir a Orden", "", :href=> "/changestateorden/" + @factura.id.to_s ,:class =>"btn btn-primary  fa"%></a>
   <%end%>
-
-
-
+</h3>
 <script>
 var app = angular.module('ShowFactura',[]);
 

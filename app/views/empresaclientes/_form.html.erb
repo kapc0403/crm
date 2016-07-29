@@ -12,13 +12,11 @@
       </ul>
     </div>
   <% end %>
-  
-    <br>
     <div class="row">
       <div class="col-md-12">
         <div class="container">
           <h2>Cliente</h2>
-          <ul class="nav nav-tabs">
+          <ul class="nav nav-pills">
             <li class="active"><a data-toggle="tab" href="#home">Cliente</a></li>
             <li><a data-toggle="tab" href="#menu1">Empresa</a></li>
           </ul>
@@ -33,84 +31,70 @@
             </div><br></br>
               <div class="row">
               <div class="col-md-5 col-md-offset-1">
-                <div class="field form-group">
-                  <%= f.label :"Nombre" %><br>
-                  <%= f.text_field :personaNombre, placeholder: "Ezequiel", :class=>"form-control" %>
-                </div>
+                <div class="field form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></div>
+  			    	  <%= f.text_field :personaNombre, :class=>"form-control", placeholder: "Nombre: Carlos" %>
+  			    	</div>
               </div>
               <div class="col-md-5 col-md-offset-0">
-                <div class="field form-group">
-                  <%= f.label :"Apellido de persona de la empresa" %><br>
-                  <%= f.text_field :personaApellido, placeholder: "Hernandez Carreño", :class=>"form-control" %>
+                <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></div>
+                  <%= f.text_field :personaApellido, placeholder: "Apellido: Carreño", :class=>"form-control" %>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-5 col-md-offset-1">
-                <div class="field form-group">
-                  <%= f.label :"Teléfono" %><br>
-                  <%= f.text_field :personaTelefono, type: "number", placeholder: "2506574", :class=>"form-control" %>
+                <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa fa-phone" aria-hidden="true"></i></div>
+                  <%= f.text_field :personaTelefono, type: "number", placeholder: "Telefono: 2506574", :class=>"form-control" %>
                 </div>
               </div>
               <div class="col-md-5 col-md-offset-0">
-                <div class="field form-group">
-                  <%= f.label :"Móvil" %><br>
-                  <%= f.text_field :personaMovil, type: "number", placeholder: "3228732378", :class=>"form-control" %>
+                <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa fa-mobile" aria-hidden="true"></i></div>
+                  <%= f.text_field :personaMovil, type: "number", placeholder: "Telefono movil: 3228732378", :class=>"form-control" %>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-2 col-md-offset-1">
-                <div class="field form-group">
-                  <%= f.label :"Tipo Cedula" %><br>
+                <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-credit-card" aria-hidden="true"></i></div>
                   <%= f.text_field :numidentificacion, placeholder: "CC", :class=>"form-control", :disabled=> true %>
                 </div>
               </div>
               <div class="col-md-3 col-md-offset-0">
-                <div class="field form-group">
-                  <%= f.label :"Numero de Cedula" %><br>
+                <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="" aria-hidden="true"></i></div>
                   <%= f.text_field :numidentificacion, type: "number", placeholder: "1024756374", :class=>"form-control" %>
                 </div>
               </div>
               <div class="col-md-5 col-md-offset-0">
-                <div class="field form-group">
-                  <%= f.label :"Fecha de Nacimiento" %><br>
+                <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
                   <%= f.text_field :fechaNacimiento, type: "date", :class=>"form-control" %>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-5 col-md-offset-1">
-                <div class="field form-group">
-                  <%= f.label :"Email"%><br>
-                  <%= f.text_field :personaEmail, placeholder: "ezehernandez@hotmail.com", :class=>"form-control" %>
+                <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></div>
+                  <%= f.text_field :personaEmail, placeholder: "E-mail: ezehernandez@hotmail.com", :class=>"form-control" %>
                 </div>
               </div>
               <div class="col-md-5 col-md-offset-0">
-                <div class="field form-group">
-                  <%= f.label :"Dirección" %><br>
-                  <%= f.text_field :personaDireccion, placeholder: "Crr 44 # 5-34", :class=>"form-control" %>
+                <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-street-view" aria-hidden="true"></i></div>
+                  <%= f.text_field :personaDireccion, placeholder: "Direccion: Crr 44 # 5-34", :class=>"form-control" %>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-5 col-md-offset-1">
-                <div class="field form-group">
-                  <%= f.label :"Fecha de inicio de contrato" %><br>
-                  <%= f.text_field :fechaInicio, type: "date", :class=>"form-control" %>
-                </div>
-              </div>
-              <div class="col-md-5 col-md-offset-0">
-                <div class="field form-group">
-                  <%= f.label :"Fecha de fin de contrato" %><br>
-                  <%= f.text_field :fechaFin, type: "date", :class=>"form-control" %>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-5 col-md-offset-1">
-                <div class="field form-group">
-                  <%= f.label :"Usuario a cargo" %><br>
+                <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></div>
                   <%= f.collection_select(:usuario_id, Usuario.all, 
                                       :id, :nombreCompletoUsuario,
                                    {:prompt => false}, {:class=>"form-control", :style=>"padding:6px 0px;"}) %>
@@ -135,56 +119,56 @@
             </div><br></br>
               <div class="row">
                   <div class="col-md-5 col-md-offset-1">
-                    <div class="field form-group">
-                      <%= f.label :"Nit" %><br>
-                      <%= f.text_field :nit, placeholder: "2341273-4", :class=>"form-control" %>
+                    <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></div>
+                      <%= f.text_field :nit, placeholder: "Nit: 2341273-4", :class=>"form-control" %>
                     </div>
                   </div>
                   <div class="col-md-5 col-md-offset-0" >
-                    <div class="field form-group">
-                      <%= f.label :"Empresa" %><br>
-                      <%= f.text_field :empresaNombre, placeholder: "EHC", :class=>"form-control" %>
+                    <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-building" aria-hidden="true"></i></div>
+                      <%= f.text_field :empresaNombre, placeholder: "Nombre de empresa", :class=>"form-control" %>
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-3 col-md-offset-1">
-                    <div class="field form-group">
-                      <%= f.label :"Teléfono" %><br>
-                      <%= f.text_field :empresaTelefono, type: "number", placeholder: "5602343", :class=>"form-control" %>
+                    <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                      <%= f.text_field :empresaTelefono, type: "number", placeholder: "Telefono empresa: 5602343", :class=>"form-control" %>
                     </div>
                   </div>
                   <div class="col-md-7 col-md-offset-0">
-                    <div class="field form-group">
-                      <%= f.label :"Dirección"%><br>
-                      <%= f.text_field :empresaDireccion, placeholder: "Cll 67 # 6-44", :class=>"form-control" %>
+                    <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-street-view" aria-hidden="true"></i></div>
+                      <%= f.text_field :empresaDireccion, placeholder: "Direccion empresa: Cll 67 # 6-44", :class=>"form-control" %>
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-5 col-md-offset-1">
-                    <div class="field form-group">
-                      <%= f.label :"Email"%><br>
-                      <%= f.text_field :empresaEmail, placeholder: "ehc@hotmail.com", :class=>"form-control" %>
+                    <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></div>
+                      <%= f.text_field :empresaEmail, placeholder: "E-mail empresa: ehc@hotmail.com", :class=>"form-control" %>
                     </div>
                   </div>
                   <div class="col-md-5 col-md-offset-0">
-                    <div class="field form-group">
-                      <%= f.label :"Página Web" %><br>
-                      <%= f.text_field :paginaWeb, placeholder: "www.EHC.com.co", :class=>"form-control" %>
+                    <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-chrome" aria-hidden="true"></i></div>
+                      <%= f.text_field :paginaWeb, placeholder: "Pagina web: www.EHC.com.co", :class=>"form-control" %>
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-5 col-md-offset-1">
-                    <div class="field form-group">
-                      <%= f.label :"Tipo"%><br>
-                      <%= f.text_field :tipo, placeholder: "", :class=>"form-control" %>
+                    <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-suitcase" aria-hidden="true"></i></div>
+                      <%= f.select :tipo, ['Activo', 'Inactivo'], :include_blank => "Por favor seleccione..." %>
                     </div>
                   </div>
                   <div class="col-md-5 col-md-offset-0">
-                    <div class="field form-group">
-                      <%= f.label :"Foto" %><br>
+                    <div class="form-group input-group">
+  			    	  <div class="input-group-addon"><i class="fa fa-camera" aria-hidden="true"></i></div>
                       <%= f.file_field :foto %>
                     </div>
                   </div>
@@ -199,7 +183,7 @@
         <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <div class="actions">
-            <%= f.submit 'Guardar Cliente', :class=>"btn btn-rouder-primary btn-block fa fa-2x" %>
+            <%= f.submit 'Guardar Cliente', :class=>"btn btn-primary btn-block fa fa-2x" %>
           </div>
         </div>
       </div>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  usuario_id: 
+  nombre: MyString
+  marca: MyString
+  referencia: MyString
+  nroProductos: MyString
+  fechaAdquisicion: MyString
+  fechaCaducidad: MyString
+  datosTecnicos: MyText
+  serial: MyString
+
+two:
+  usuario_id: 
+  nombre: MyString
+  marca: MyString
+  referencia: MyString
+  nroProductos: MyString
+  fechaAdquisicion: MyString
+  fechaCaducidad: MyString
+  datosTecnicos: MyText
+  serial: MyString
